@@ -19,7 +19,7 @@
           <a class="nav-link" href="index.php?content_page=ManagePaper">WOMENS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Hat">KIDS</a>
+          <a class="nav-link" href="index.php?content_page=MVC">KIDS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Hat">HAT</a>

@@ -12,6 +12,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     $controller->{$_GET['action']."_GET"}();
 } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
     $controller->{$_POST['action']."_POST"}();
+    echo "<script>location.href='index.php?content_page=Hat';</script>";
 } else {
     $controller->index();
 }
