@@ -34,10 +34,33 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+13:00";
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (ID),
+  `Email` varchar(256) NOT NULL,
+  `PasswordHash` varchar(256) NOT NULL,
+  `EmailConfirmed` tinyint(1) NOT NULL,
+  `PhoneNumber` varchar(256) NOT NULL,
+  `UserName` varchar(256) NOT NULL,
+  `Address` varchar(256) NOT NULL,
+  `CustomerName` varchar(256) NOT NULL,
+  `Enabled` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `users` (`Email`, `PasswordHash`, `EmailConfirmed`, `PhoneNumber`, `UserName`, `Address`, `CustomerName`, `Enabled`) VALUES
+('admin@email.com', 'AQAAAAEAACcQAAAAEGt6T1qkdeJrm1vOCon/mjRZUvMxZVSWL4mrenW0kmrAQDdUY2iZUDW9v7ldY6qAiw==', 1, '021-2200888', 'Admin', 'Auckland', 'Administrator', 1),
+('test@me.com', 'AQAAAAEAACcQAAAAEGt6T1qkdeJrm1vOCon/mjRZUvMxZVSWL4mrenW0kmrAQDdUY2iZUDW9v7ldY6qAiw==', 1, '021-558899', 'Tester', 'Auckland', 'Tester', 1);
+
+
+--
 -- Table structure for table `hats`
 --
 CREATE TABLE `hats` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`);
   `CategoryID` int(11) NOT NULL,
   `SupplierID` varchar(255) NOT NULL,
   `Name` varchar(255) NOT NULL,
@@ -45,12 +68,6 @@ CREATE TABLE `hats` (
   `Price` decimal(10,0) NOT NULL,
   `Image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `hats`
-  ADD PRIMARY KEY (`ID`);
-
-ALTER TABLE `hats`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 -- Dumping data for table `hats`
 INSERT INTO `hats` (`CategoryID`, `SupplierID`, `Name`, `Description`, `Price`, `Image`) VALUES
@@ -74,7 +91,17 @@ INSERT INTO `hats` (`CategoryID`, `SupplierID`, `Name`, `Description`, `Price`, 
 --
 CREATE TABLE `categories` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (id),
+  PRIMARY KEY (ID),
   `Name` varchar(255) NOT NULL,
-  `Description` varchar(3000) NOT NULL,
+  `Description` varchar(3000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `suppliers`
+--
+CREATE TABLE `suppliers` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (ID),
+  `Name` varchar(255) NOT NULL,
+  `Description` varchar(3000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

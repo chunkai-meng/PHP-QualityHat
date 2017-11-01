@@ -19,7 +19,7 @@
   </head>
 
   <body>
-<?php 
+<?php
 include('Views/Shared/Header.php');
 echo '<main role="main">
         <br><br><br>
@@ -76,12 +76,12 @@ function Route(){
         $controller->index();
     }
   }
-  elseif (isset($_POST['content_page']))
-  {
-    $page_name = $_POST['content_page'];
-    $page_content = $page_name.'.php';
-  }
+  // elseif (isset($_POST['content_page']))
+  // {
+  //   $page_name = $_POST['content_page'];
+  //   $page_content = $page_name.'.php';
+  // }
   else
-  {$page_content = 'Shop.php';}
+  {$page_content = 'PageNotFound.php';}
 }
 ?>

@@ -36,11 +36,10 @@ while ($row = $models->fetch_assoc())
     $price = $row["price"];
     $image = $row["image"];
 
-
 echo "
     <tr>
         <td>
-        <img src='/images/hats/636444452941289397.jpg' width='60' height='60' />
+        <img src='/images/hats/$image' width='60' height='60' />
         </td>
         <td>
             $name

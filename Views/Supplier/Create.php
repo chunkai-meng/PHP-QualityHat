@@ -2,12 +2,12 @@
 <h4>Create New</h4>
 <hr />
 <br>
-<form method="post" enctype="multipart/form-data" action="index.php?content_page=Category">
+<form method="post" enctype="multipart/form-data" action="index.php?content_page=Supplier">
 <input type="hidden" name="action" value="Create" />
 
 <div class="form-group">
 <label for="exampleFormControlSelect1">Name</label>
-    <input type="text" class="form-control" name="name" placeholder="Category Name">
+    <input type="text" class="form-control" name="name" placeholder="Supplier Name">
 </div>
 <div class="form-group">
 <label for="exampleFormControlSelect1">Description</label>

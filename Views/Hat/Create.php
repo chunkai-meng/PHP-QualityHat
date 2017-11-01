@@ -7,7 +7,7 @@
     <label for="exampleFormControlSelect1">Upload Image</label>
     <div class="form-group">
         <label class="custom-file">
-        <input type="file" name="image_file" class="custom-file-input">
+        <input type="file" accept="image/jpeg" name="file" class="custom-file-input">
         <span class="custom-file-control"></span>
         </label>
     </div>

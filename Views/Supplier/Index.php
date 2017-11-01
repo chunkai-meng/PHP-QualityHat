@@ -1,7 +1,7 @@
 <h4>Index</h4>
 
 <p>
-    <a href="index.php?content_page=Category&action=Create">Create New</a>
+    <a href="index.php?content_page=Supplier&action=Create">Create New</a>
 </p>
 <table class="table table-striped">
   <thead>

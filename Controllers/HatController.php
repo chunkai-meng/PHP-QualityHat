@@ -22,8 +22,28 @@ class HatController
         $this->model->Price = $_POST['price'];
         $this->model->CategoryID = $_POST['category'];
         $this->model->SupplierID = $_POST['supplier'];
-        $this->model->Image = $_FILES["image_file"]["name"];
+
+
+        if (isset($_FILES["file"]) && ($_FILES["file"]["error"] > 0))
+        {
+          echo "Error: " . $_FILES["file"]["error"] . "<br />";
+        }
+        elseif (isset($_FILES["file"]))
+        {
+          $name = $_FILES['file']['name'];
+          $target_dir = "images/hats/";
+          $target_file = $target_dir . basename($_FILES["file"]["name"]);
+          $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+          $extensions_arr = array("jpg","jpeg","png","gif");
+          if( in_array($imageFileType,$extensions_arr) ){
+            $new_image_name = date('Y-m-d-H-i-s') . '_' . uniqid() . "." . $imageFileType;
+            move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir . $new_image_name);
+            $this->model->Image = $new_image_name;
+          }
+        }
+
         $this->model->create();
-        echo "<script>location.href='index.php?content_page=Hat';</script>";
+        // echo "<script>location.href='index.php?content_page=Hat';</script>";
     }
+
 }
