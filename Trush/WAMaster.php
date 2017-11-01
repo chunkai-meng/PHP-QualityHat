@@ -24,7 +24,9 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Hat">HAT</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?content_page=Category">CATEGORY</a>
+        </li>
       </ul>
       <ul class="navbar-nav form-inline my-2 my-lg-0">
         <form class="form-inline my-2 my-lg-0">
@@ -48,7 +50,41 @@
 <main role="main">
   <br><br><br>
   <div class="container">
-    <?php include($page_content);?>
+    <?php
+    foreach (glob("Controllers/*.php") as $filename)
+    {
+        include $filename;
+    }
+    foreach (glob("Models/*.php") as $filename)
+    {
+        include $filename;
+    }
+
+    if (isset($_GET['content_page']))
+    {
+      $page_name = $_GET['content_page'];
+      $modelName = $page_name.'Model';
+      $model = new $modelName();
+      $controllerName = $page_name.'Controller';
+      $controller = new $controllerName($model);
+
+      if (isset($_GET['action']) && !empty($_GET['action'])) {
+        $controller->{$_GET['action']."_GET"}();
+      } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
+        $controller->{$_POST['action']."_POST"}();
+      } else {
+        $controller->index();
+      }
+    }
+    elseif (isset($_POST['content_page']))
+    {
+      $page_name = $_POST['content_page'];
+      $page_content = $page_name.'.php';
+    }
+    else
+    {include(shop.php);}
+
+    ?>
   </div>
 </main>
 

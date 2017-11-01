@@ -20,6 +20,23 @@ class HatModel
         $this->Image = "Image URL";
     }
 
+    public function get_all()
+    {
+      $sql="SELECT Hats.Name As name,
+                    Hats.Description As description,
+                    Hats.Price As price,
+                    Hats.Image As image,
+                    Hats.CategoryID As category_ID,
+                    Hats.SupplierID As supplier_ID
+            FROM Hats";
+
+      include 'db_connection.php';
+      $rs=$mysqli->query($sql);
+      if (!$rs)
+        {exit("Error in SQL");}
+      return $rs;
+    }
+
     public function create() {
       if (isset($_FILES["image_file"]) && ($_FILES["image_file"]["error"] > 0))
         {
@@ -32,7 +49,7 @@ class HatModel
         }
 
       // create connection
-      $mysqli = new mysqli("localhost", "mengc06", "05011981", "mengc06mysql3");
+      include 'db_connection.php';
       if ($mysqli->connect_errno) {
           echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
       }
@@ -41,7 +58,7 @@ class HatModel
       // create SQL statement
       // $sql = "INSERT INTO Employees(FirstName,LastName,Title)
       $sql = "INSERT INTO Hats(SupplierID, CategoryID, Name, Description, Price, Image) VALUES($this->SupplierID, $this->CategoryID, '$this->Name', '$this->Description', $this->Price, '$this->Image')";
-      
+
       // execute SQL statement and get results
       if (!$mysqli->query($sql)) {
           echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
