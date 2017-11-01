@@ -7,7 +7,8 @@ class SupplierModel
     public function get_all()
     {
       include 'db_connection.php';
-      $sql="SELECT Suppliers.Name As name,
+      $sql="SELECT Suppliers.ID As id,
+                    Suppliers.Name As name,
                     Suppliers.Description As description
             FROM Suppliers";
 

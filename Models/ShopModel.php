@@ -1,5 +1,5 @@
 <?php
-class HatModel
+class ShopModel
 {
     public $HatID;
     public $CategoryID;
@@ -40,10 +40,6 @@ class HatModel
 
     public function create() {
       include 'db_connection.php';
-      if ($mysqli->connect_errno) {
-          echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-      }
-
       $sql = "INSERT INTO Hats(SupplierID, CategoryID, Name, Description, Price, Image) VALUES($this->SupplierID, $this->CategoryID, '$this->Name', '$this->Description', $this->Price, '$this->Image')";
 
       if (!$mysqli->query($sql)) {

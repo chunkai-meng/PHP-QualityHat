@@ -30,6 +30,9 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Supplier">SUPPLIER</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?content_page=Member">Member</a>
+        </li>
       </ul>
       <ul class="navbar-nav form-inline my-2 my-lg-0">
         <form class="form-inline my-2 my-lg-0">

@@ -13,7 +13,11 @@ class HatController
     }
 
     public function Create_GET() {
-        require_once 'Views/Hat/Create.php';
+      $categoryModel = new categoryModel();
+      $categoryModels = $categoryModel->get_all();
+      $supplierModel = new supplierModel();
+      $supplierModels = $supplierModel->get_all();
+      require_once 'Views/Hat/Create.php';
     }
 
     public function Create_POST() {
@@ -43,7 +47,7 @@ class HatController
         }
 
         $this->model->create();
-        // echo "<script>location.href='index.php?content_page=Hat';</script>";
+        echo "<script>location.href='index.php?content_page=Hat';</script>";
     }
 
 }

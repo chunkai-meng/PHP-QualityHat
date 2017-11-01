@@ -30,16 +30,17 @@
 <?php
 while ($row = $models->fetch_assoc())
 {
-
+    $image = $row["image"];
     $name = $row["name"];
     $desc = $row["description"];
     $price = $row["price"];
-    $image = $row["image"];
+    $category = $row["category_ID"];
+    $supplier = $row["supplier_ID"];
 
 echo "
     <tr>
         <td>
-        <img src='/images/hats/$image' width='60' height='60' />
+        <img src='images/hats/$image' width='60' height='60' />
         </td>
         <td>
             $name
@@ -48,10 +49,10 @@ echo "
             $price
         </td>
         <td>
-            Mens
+            $category
         </td>
         <td>
-            Adidas
+            $supplier
         </td>
         <td>
             $desc

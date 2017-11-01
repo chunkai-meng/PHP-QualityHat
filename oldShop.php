@@ -12,7 +12,6 @@
 
   <div class="album text-muted">
     <div class="container">
-
       <div class="row">
         <div class="card">
           <img data-src="holder.js/100px280?theme=thumb" alt="Card image cap">
