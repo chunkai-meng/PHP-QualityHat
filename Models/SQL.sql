@@ -38,22 +38,16 @@ SET time_zone = "+13:00";
 --
 
 CREATE TABLE `users` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (ID),
-  `Email` varchar(256) NOT NULL,
-  `PasswordHash` varchar(256) NOT NULL,
-  `EmailConfirmed` tinyint(1) NOT NULL,
-  `PhoneNumber` varchar(256) NOT NULL,
-  `UserName` varchar(256) NOT NULL,
-  `Address` varchar(256) NOT NULL,
-  `CustomerName` varchar(256) NOT NULL,
-  `Enabled` tinyint(1) NOT NULL
+  `ID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `Email` varchar(255) NOT NULL,
+  `PasswordHash` varchar(255) NOT NULL,
+  `EmailConfirmed` tinyint(1) DEFAULT '0',
+  `PhoneNumber` varchar(255) DEFAULT NULL,
+  `Name` varchar(255) DEFAULT NULL,
+  `Address` varchar(255) DEFAULT NULL,
+  `CustomerName` varchar(255) DEFAULT NULL,
+  `Enabled` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `users` (`Email`, `PasswordHash`, `EmailConfirmed`, `PhoneNumber`, `UserName`, `Address`, `CustomerName`, `Enabled`) VALUES
-('admin@email.com', 'AQAAAAEAACcQAAAAEGt6T1qkdeJrm1vOCon/mjRZUvMxZVSWL4mrenW0kmrAQDdUY2iZUDW9v7ldY6qAiw==', 1, '021-2200888', 'Admin', 'Auckland', 'Administrator', 1),
-('test@me.com', 'AQAAAAEAACcQAAAAEGt6T1qkdeJrm1vOCon/mjRZUvMxZVSWL4mrenW0kmrAQDdUY2iZUDW9v7ldY6qAiw==', 1, '021-558899', 'Tester', 'Auckland', 'Tester', 1);
-
 
 --
 -- Table structure for table `hats`
@@ -71,19 +65,7 @@ CREATE TABLE `hats` (
 
 -- Dumping data for table `hats`
 INSERT INTO `hats` (`CategoryID`, `SupplierID`, `Name`, `Description`, `Price`, `Image`) VALUES
-(1, '1', 'asdf', 'asdf', '0', 'asdf'),
-(1, '1', 'One', 'asdf', '0', 'asdf'),
-(1, '1', 'One', 'DESC', '0', 'logo-2017.png'),
-(1, '1', 'asfd', 'asdfsdf', '234', 'QQ20171014-131433.png'),
 (1, '4', 'f2f323f2323', '3f23fee2', '333', 'QQ20171014-131230.png'),
-(1, '4', 'f2f323f2323', '3f23fee2', '333', 'QQ20171014-131230.png'),
-(1, '1', 'asfdfffff', 'fffff', '2', 'QQ20171014-131433.png'),
-(4, '1', 'asfd', 'asdf', '6543', ''),
-(1, '1', '22', '33', '3333', '640.jpg'),
-(1, '1', 'asdf', 'jhgfds', '65432', 'QQ20171014-131230.png'),
-(1, '1', 'f', 'fffff', '2', 'QQ20171014-131433.png'),
-(1, '1', '23', '23', '23', 'QQ20171014-131433.png'),
-(4, '1', 'fda', 'asdfsdf', '23452', 'Unitec-logo.png'),
 (1, '1', 'asdf', 'asdf', '23', 'Halloween.jpg');
 
 --
@@ -104,4 +86,39 @@ CREATE TABLE `suppliers` (
   PRIMARY KEY (ID),
   `Name` varchar(255) NOT NULL,
   `Description` varchar(3000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `suppliers`
+--
+CREATE TABLE `orderdetails` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (ID),
+  `Quantity` int(11) NOT NULL,
+  `UnitPrice` decimal(10,0) NOT NULL,
+  `HatID` int(11) NOT NULL,
+  `OrderID` int(11) NOT NULL,
+  `ModifiedTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `suppliers`
+--
+CREATE TABLE `orders` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (ID),
+  `Firstname` varchar(255) NOT NULL,
+  `Lastname` varchar(255) NOT NULL,
+  `Address1` varchar(1000) NOT NULL,
+  `Address2` varchar(1000) DEFAULT NULL,
+  `City` varchar(255) NOT NULL,
+  `State` varchar(255) DEFAULT NULL,
+  `Country` varchar(255) NOT NULL,
+  `PostalCode` varchar(255) DEFAULT NULL,
+  `Phone` varchar(255) NOT NULL,
+  `GST` decimal(10,0) NOT NULL,
+  `Price` decimal(10,0) NOT NULL,
+  `Total` decimal(10,0) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `ModifiedTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

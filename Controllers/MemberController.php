@@ -30,16 +30,11 @@ class MemberController
 
     public function Create_POST() {
         require_once 'Views/Member/Create.php';
-        $this->model->ID = $_POST['ID'];
+        $this->model->Name = $_POST['Email'];
         $this->model->Email = $_POST['Email'];
-        $this->model->PasswordHash = $_POST['PasswordHash'];
-        $this->model->EmailConfirmed = $_POST['EmailConfirmed'];
-        $this->model->PhoneNumber = $_POST['PhoneNumber'];
-        $this->model->UserName = $_POST['UserName'];
-        $this->model->Address = $_POST['Address'];
-        $this->model->CustomerName= $_POST['CustomerName'];
-        $this->model->Enabled = $_POST['Enabled'];
+        $this->model->PasswordHash = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+        $this->model->CustomerName = $_POST['Name'];
         $this->model->create();
-        echo "<script>location.href='index.php?content_page=Member';</script>";
+        // echo "<script>location.href='index.php?content_page=Member';</script>";
     }
 }

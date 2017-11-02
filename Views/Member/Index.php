@@ -9,9 +9,6 @@
              Name
           </th>
           <th>
-             Email Confirmed
-          </th>
-          <th>
              Address
           </th>
           <th>
@@ -19,6 +16,9 @@
           </th>
           <th>
              Customer Name
+          </th>
+          <th>
+             Email Confirmed
           </th>
           <th>
              Enabled

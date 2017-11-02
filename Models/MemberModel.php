@@ -6,7 +6,7 @@ class MemberModel
   public $PasswordHash;
   public $EmailConfirmed;
   public $PhoneNumber;
-  public $UserName;
+  public $Name;
   public $Address;
   public $CustomerName;
   public $Enabled;
@@ -19,7 +19,7 @@ class MemberModel
                   Users.PasswordHash As password,
                   Users.EmailConfirmed As email_confirmed,
                   Users.PhoneNumber As phone,
-                  Users.UserName As name,
+                  Users.Name As name,
                   Users.Address As address,
                   Users.CustomerName As customer_name,
                   Users.Enabled As enabled
@@ -48,7 +48,7 @@ class MemberModel
 
   public function create() {
     include 'db_connection.php';
-    $sql = "INSERT INTO Users (Name, Description) VALUES ('$this->Name', '$this->Description')";
+    $sql = "INSERT INTO Users (Name, Email, PasswordHash, CustomerName) VALUES ('$this->Name', '$this->Email', '$this->PasswordHash', '$this->CustomerName')";
     if (!$mysqli->query($sql)) {
         echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }
