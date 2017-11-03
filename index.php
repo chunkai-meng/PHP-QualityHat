@@ -67,7 +67,6 @@ function Route(){
     $page_name = "Shop";
 
 // ---- for shopping
-echo $page_name;
 if (strpos($page_name, 'php-shopping') !== false) {
   include($page_name.".php");
   exit;

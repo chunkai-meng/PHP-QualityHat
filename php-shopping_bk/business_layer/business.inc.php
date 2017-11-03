@@ -1,5 +1,6 @@
 <?php
-
+// Include MySQL class
+require_once("php-shopping/data_layer/data.inc.php");
 
 class Business {
 
@@ -72,7 +73,7 @@ class Business {
   		$action = $_GET['action'];
   	}
 
-  switch ($action) {
+      switch ($action) {
   	case 'add':
   		if (isset($cart) && $cart!='') {
   			$cart .= ','.$_GET['id'];

@@ -1,19 +1,13 @@
+<?php
+ob_start(); //set buffer on
+session_start(); //starting session
+// Include business layer
+require_once("php-shopping/business_layer/business.inc.php");
+require_once("Controllers/ShoppingCartController.php");
+?>
 
-  <section class='jumbotron text-center'>
-    <div class='container'>
-      <h1 class='jumbotron-heading'>Album example</h1>
-      <p class='lead text-muted'>Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-      <p>
-        <a href='#' class='btn btn-primary'>Main call to action</a>
-        <a href='#' class='btn btn-secondary'>Secondary action</a>
-      </p>
-    </div>
-  </section>
-
-  <div class='container marketing'>
-
-      <div class='row'>
-
+<div class='container marketing'>
+    <div class='row'>
 <?php
 // $i = 0;
 while ($row = $models->fetch_assoc())
@@ -37,7 +31,8 @@ while ($row = $models->fetch_assoc())
         <div class='row'>
           <div class='col-xs-6 col-md-8'><h4>$$price</h4></div>
           <div class='col-xs-6 col-md-4' align='right'>
-            <form><button type=button class=btn btn-link>Link</button></button></form>
+
+            <a href='index.php?content_page=php-shopping/cart&action=add&id=$id' class='btn btn-primary'>+</a>
           </div>
         </div>
       </div>
@@ -49,3 +44,24 @@ while ($row = $models->fetch_assoc())
 
     </div>
   </div>
+<hr />
+<div id="shoppingcart">
+  <h2>Your Shopping Cart</h2>
+  <?php
+  echo ShoppingCartController::writeShoppingCart();
+  ?>
+</div>
+<hr />
+<div id="booklist">
+  <h2>Books In Our Store</h2>
+  <?php
+  echo ShoppingCartController::displayBooks();
+  ?>
+</div>
+<div id="contents">
+	<h2>Please check quantities...</h2>
+	<?php
+	echo Business::showCart();
+	?>
+	<p><a href="index.php?content_page=php-shopping/index">Back to bookshop...</a></p>
+</div>
