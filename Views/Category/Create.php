@@ -1,6 +1,5 @@
-<br>
-<h4>Create New</h4>
-<hr />
+<?php require_once 'Views/Shared/Breadcrumb.php'; ?>
+
 <br>
 <form method="post" enctype="multipart/form-data" action="index.php?content_page=Category">
 <input type="hidden" name="action" value="Create" />

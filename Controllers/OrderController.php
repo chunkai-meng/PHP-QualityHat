@@ -4,7 +4,8 @@ class OrderController
     private $model;
 
     public function __construct($model) {
-        $this->model = $model;
+      require_once 'Views/Shared/CheckLogin.php';
+      $this->model = $model;
     }
 
     public function index(){

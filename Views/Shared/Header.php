@@ -36,6 +36,10 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Order">ORDER</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?content_page=php-shopping/index">Shopping Card</a>
+        </li>
+
       </ul>
       <ul class="navbar-nav form-inline my-2 my-lg-0">
         <form class="form-inline my-2 my-lg-0">
@@ -45,9 +49,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="index.php?content_page=Login">Login</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="index.php?content_page=Member&action=Login">Login</a>
+            <a class="dropdown-item" href="#">Account Info</a>
+            <a class="dropdown-item" href="index.php?content_page=Member&action=Logout">Logout</a>
           </div>
         </li>
       </ul>

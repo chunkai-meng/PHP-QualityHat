@@ -1,44 +1,28 @@
-<?php 
-session_start(); 
-echo 'Session ID: '. session_id();
-if(isset($_SESSION['views']))  $_SESSION['views']=$_SESSION['views']+1;
-else  $_SESSION['views']=1;
-echo "<br>Views=". $_SESSION['views']; 
-echo "<br>". password_hash("P@ssw0rd", PASSWORD_DEFAULT);
-
-$hash = password_hash("P@ssw0rd", PASSWORD_DEFAULT);
-
-if (password_verify('P@ssw0rd', $hash)) {
-    echo 'Password is valid!';
-} else {
-    echo 'Invalid password.';
-}
-?> 
-<h4>Index</h4>
+<?php require_once 'Views/Shared/Breadcrumb.php'; ?>
 
 <p>
-    <a href="index.php?content_page=Order&action=Create">Create New</a>
+    <a href="index.php?content_page=Order&action=Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table table-striped">
   <thead>
         <tr>
           <th>
-              Image
+            Image
           </th>
           <th>
-              Name
+            Name
           </th>
           <th>
-              Price
+            Price
           </th>
           <th>
-              Category
+            Category
           </th>
           <th>
-              Supplier
+            Supplier
           </th>
           <th>
-              Description
+            Description
           </th>
         </tr>
   </thead>

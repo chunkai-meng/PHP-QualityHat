@@ -1,7 +1,7 @@
-<h4>Index</h4>
+<?php require_once 'Views/Shared/Breadcrumb.php'; ?>
 
 <p>
-    <a href="index.php?content_page=Supplier&action=Create">Create New</a>
+    <a href="index.php?content_page=Supplier&action=Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table table-striped">
   <thead>

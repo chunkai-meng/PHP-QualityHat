@@ -4,12 +4,13 @@ class HatController
     private $model;
 
     public function __construct($model) {
-        $this->model = $model;
+      require_once 'Views/Shared/CheckLogin.php';
+      $this->model = $model;
     }
 
     public function index(){
-        $models = $this->model->get_all();
-        require_once 'Views/Hat/Index.php';
+      $models = $this->model->get_all();
+      require_once 'Views/Hat/Index.php';
     }
 
     public function Create_GET() {

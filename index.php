@@ -60,28 +60,31 @@ function Route(){
       include $filename;
   }
 
-  if (isset($_GET['content_page']))
-  {
-    $page_name = $_GET['content_page'];
-    $modelName = $page_name.'Model';
-    $model = new $modelName();
-    $controllerName = $page_name.'Controller';
-    $controller = new $controllerName($model);
 
-    if (isset($_GET['action']) && !empty($_GET['action'])) {
-      $controller->{$_GET['action']."_GET"}();
-    } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
-        $controller->{$_POST['action']."_POST"}();
-    } else {
-        $controller->index();
-    }
-  }
-  // elseif (isset($_POST['content_page']))
-  // {
-  //   $page_name = $_POST['content_page'];
-  //   $page_content = $page_name.'.php';
-  // }
+  if (isset($_GET['content_page']))
+    $page_name = $_GET['content_page'];
   else
-  {$page_content = 'PageNotFound.php';}
+    $page_name = "Shop";
+
+// ---- for shopping
+echo $page_name;
+if (strpos($page_name, 'php-shopping') !== false) {
+  include($page_name.".php");
+  exit;
+}
+//
+
+  $modelName = $page_name.'Model';
+  $model = new $modelName();
+  $controllerName = $page_name.'Controller';
+  $controller = new $controllerName($model);
+
+  if (isset($_GET['action']) && !empty($_GET['action'])) {
+    $controller->{$_GET['action']."_GET"}();
+  } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
+      $controller->{$_POST['action']."_POST"}();
+  } else {
+      $controller->index();
+  }
 }
 ?>
