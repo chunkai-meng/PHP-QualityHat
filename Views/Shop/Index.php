@@ -1,7 +1,7 @@
-<div class='container marketing'>
-    <div class='row'>
 <?php
-// $i = 0;
+
+echo "<div class='container marketing'>
+    <div class='row'>";
 while ($row = $models->fetch_assoc())
 {
     $id = $row['id'];
@@ -23,8 +23,7 @@ while ($row = $models->fetch_assoc())
         <div class='row'>
           <div class='col-xs-6 col-md-8'><h4>$$price</h4></div>
           <div class='col-xs-6 col-md-4' align='right'>
-
-            <a href='index.php?content_page=ShoppingCart&action=add&id=$id' class='btn btn-primary'>+</a>
+            <a href='index.php?content_page=ShoppingCart&action=add&id=$id' class='badge badge-dark'>+</a>
           </div>
         </div>
       </div>
@@ -35,18 +34,11 @@ while ($row = $models->fetch_assoc())
     </div>
   </div>
 <hr />
-<div id="shoppingcart">
-  <h2>Your Shopping Cart</h2>
-  <?php
-  // echo ShoppingCartController::writeShoppingCart();
-  ?>
-</div>
-<hr />
 
-<div id="contents">
-	<h2>Please check quantities...</h2>
-	<?php
-	echo ShoppingCartController::showCart();
-	?>
-	<p><a href="index.php?content_page=php-shopping/index">Back to bookshop...</a></p>
-</div>
+<h3>Shopping Cart </h3>
+<?php
+// $count = ShoppingCartController::countShoppingCart();
+// echo "<span class='badge badge-secondary'>$count</span>";
+
+echo ShoppingCartController::showCart();
+?>
