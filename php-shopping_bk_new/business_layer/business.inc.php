@@ -72,6 +72,7 @@ class Business {
   		$action = $_GET['action'];
   	}
 
+
   switch ($action) {
   	case 'add':
   		if (isset($cart) && $cart!='') {

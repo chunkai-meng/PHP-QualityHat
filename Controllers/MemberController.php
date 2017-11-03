@@ -1,4 +1,6 @@
 <?php
+session_start(); //starting session
+
 class MemberController
 {
     private $model;

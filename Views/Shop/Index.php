@@ -1,11 +1,3 @@
-<?php
-ob_start(); //set buffer on
-session_start(); //starting session
-// Include business layer
-require_once("php-shopping/business_layer/business.inc.php");
-require_once("Controllers/ShoppingCartController.php");
-?>
-
 <div class='container marketing'>
     <div class='row'>
 <?php
@@ -32,7 +24,7 @@ while ($row = $models->fetch_assoc())
           <div class='col-xs-6 col-md-8'><h4>$$price</h4></div>
           <div class='col-xs-6 col-md-4' align='right'>
 
-            <a href='index.php?content_page=php-shopping/cart&action=add&id=$id' class='btn btn-primary'>+</a>
+            <a href='index.php?content_page=ShoppingCart&action=add&id=$id' class='btn btn-primary'>+</a>
           </div>
         </div>
       </div>
@@ -40,28 +32,21 @@ while ($row = $models->fetch_assoc())
     </div>";
 }
 ?>
-
-
     </div>
   </div>
 <hr />
 <div id="shoppingcart">
   <h2>Your Shopping Cart</h2>
   <?php
-  echo ShoppingCartController::writeShoppingCart();
+  // echo ShoppingCartController::writeShoppingCart();
   ?>
 </div>
 <hr />
-<div id="booklist">
-  <h2>Books In Our Store</h2>
-  <?php
-  echo ShoppingCartController::displayBooks();
-  ?>
-</div>
+
 <div id="contents">
 	<h2>Please check quantities...</h2>
 	<?php
-	echo Business::showCart();
+	echo ShoppingCartController::showCart();
 	?>
 	<p><a href="index.php?content_page=php-shopping/index">Back to bookshop...</a></p>
 </div>
