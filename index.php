@@ -66,12 +66,12 @@ function Route(){
   else
     $page_name = "Shop";
 
-// ---- for shopping
-if (strpos($page_name, 'php-shopping') !== false) {
-  include($page_name.".php");
-  exit;
-}
-//
+// // ---- for shopping
+// if (strpos($page_name, 'php-shopping') !== false) {
+//   include($page_name.".php");
+//   exit;
+// }
+// //
 
   $modelName = $page_name.'Model';
   $model = new $modelName();
