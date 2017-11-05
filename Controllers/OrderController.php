@@ -27,7 +27,6 @@ class OrderController
         $this->model->GST = $_POST['GST'];
         $this->model->Price = $_POST['price'];
         $this->model->Total = $_POST['totalprice'];
-
         $this->Firstname = "";
         $this->Lastname = "";
         $this->Address1 = "";
@@ -43,36 +42,27 @@ class OrderController
         echo "Total:".$this->model->Total."<br>";
 
         // Create an Order
-        $this->model->create();
+        $orderID = $this->model->create();
 
+        // Create Items;
+        $item = new OrderDetailModel();
         foreach ($_POST as $key=>$value) {
           if (stristr($key,'qty')) {
             $id = str_replace('qty','',$key);
             $qty = $value;
             echo "<br>ID:$id<br>QTY: $qty<br>";
 
+            // init an item
+            $item->HatID = $id;
+            $item->UnitPrice = 0;
+            $item->Quantity = $value;
+            $item->OrderID = $orderID;
+            $item->create();
           }
         }
-        // if (isset($_FILES["file"]) && ($_FILES["file"]["error"] > 0))
-        // {
-        //   echo "Error: " . $_FILES["file"]["error"] . "<br />";
-        // }
-        // elseif (isset($_FILES["file"]))
-        // {
-        //   $name = $_FILES['file']['name'];
-        //   $target_dir = "images/hats/";
-        //   $target_file = $target_dir . basename($_FILES["file"]["name"]);
-        //   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        //   $extensions_arr = array("jpg","jpeg","png","gif");
-        //   if( in_array($imageFileType,$extensions_arr) ){
-        //     $new_image_name = date('Y-m-d-H-i-s') . '_' . uniqid() . "." . $imageFileType;
-        //     move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir . $new_image_name);
-        //     $this->model->Image = $new_image_name;
-        //   }
-        // }
-        //
-        // $this->model->create();
-        // echo "<script>location.href='index.php?content_page=Order';</script>";
+
+
+        // update items' orderID
     }
 
 }

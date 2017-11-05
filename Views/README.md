@@ -11,5 +11,5 @@
     - Get all this value post from Shopping Cart Default and show in OrderController->create_POST(); Done
 
 - Insert Order and Item values into DB
-    - INSERT a Order model : Done
-    - PASS this OrderID to every OrderDetail model and INSERT to DB.
+    - INSERT a Order model; Done
+    - PASS this OrderID to every OrderDetail model and INSERT to DB; Done

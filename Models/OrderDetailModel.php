@@ -31,13 +31,13 @@ class OrderDetailModel
       return $rs;
     }
 
-    public static function create() {
+    public function create() {
       include 'db_connection.php';
       if ($mysqli->connect_errno) {
           echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
       }
       $userid = $_SESSION['current_userid'];
-      $sql = "INSERT INTO Orders(HatID, UnitPrice, Quantity, OrderID) VALUES($this->HatID, $this->UnitPrice, $this->Quantity, $this->OrderID)";
+      $sql = "INSERT INTO OrderDetails (HatID, UnitPrice, Quantity, OrderID) VALUES($this->HatID, $this->UnitPrice, $this->Quantity, $this->OrderID)";
       if (!$mysqli->query($sql)) {
           echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
       }

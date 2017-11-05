@@ -59,5 +59,6 @@ class OrderModel
       if (!$mysqli->query($sql)) {
           echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
       }
+      return $mysqli->insert_id;
     }
 }
