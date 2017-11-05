@@ -1,6 +1,6 @@
 <?php
-session_start();
-// require_once this php before renderying any membership page. 
+require_once 'Views/Shared/CheckSession.php';
+
 if (!isset($_SESSION['flag']) || ($_SESSION['flag'] == false))
 {
   if (!$_GET['content_page'])

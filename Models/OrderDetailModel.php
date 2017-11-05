@@ -8,6 +8,11 @@ class OrderDetailModel
     public $OrderID;
     public $ModifiedTimestamp;
     public function __construct(){
+    // public function __construct($HatID, $UnitPrice, $Quantity, $OrderID){
+      // $this->$HatID = $HatID;
+      // $this->$UnitPrice= $UnitPrice;
+      // $this->$Quantity = $Quantity;
+      // $this->$OrderID = $OrderID;
     }
 
     public function get_all()
@@ -26,12 +31,13 @@ class OrderDetailModel
       return $rs;
     }
 
-    public function create() {
+    public static function create() {
       include 'db_connection.php';
       if ($mysqli->connect_errno) {
           echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
       }
-      $sql = "INSERT INTO Orders(HatID, UnitPrice, Quantity, OrderID) VALUES($this->HatID, $this->UnitPrice, '$this->Quantity', '$this->OrderID')";
+      $userid = $_SESSION['current_userid'];
+      $sql = "INSERT INTO Orders(HatID, UnitPrice, Quantity, OrderID) VALUES($this->HatID, $this->UnitPrice, $this->Quantity, $this->OrderID)";
       if (!$mysqli->query($sql)) {
           echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
       }

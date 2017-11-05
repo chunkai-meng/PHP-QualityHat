@@ -28,15 +28,15 @@ class OrderModel
                     Orders.Address1 As addr1,
                     Orders.Address2 As addr2,
                     Orders.City As City,
-                    Orders.State As State, 
-                    Orders.Country As country, 
-                    Orders.PostalCode As postaCode, 
-                    Orders.Phone As phone, 
-                    Orders.GST As gst, 
-                    Orders.Price As price, 
-                    Orders.Total As total, 
-                    Orders.UserID As userid, 
-                    Orders.ModifiedTimestamp As modifiedtime 
+                    Orders.State As State,
+                    Orders.Country As country,
+                    Orders.PostalCode As postaCode,
+                    Orders.Phone As phone,
+                    Orders.GST As gst,
+                    Orders.Price As price,
+                    Orders.Total As total,
+                    Orders.UserID As userid,
+                    Orders.ModifiedTimestamp As modifiedtime
             FROM Orders";
 
       include 'db_connection.php';

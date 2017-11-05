@@ -40,24 +40,7 @@ class ShoppingCartController
           } else {
             $isfound = true;
           }
-
-
-          //   $newcart = $items[--$index].$newcart;
-          // } elseif ($index == count($items)){
-          //   $newcart = $items[--$index];
-          // } else {
-          //   $newcart = $items[--$index].','.$newcart;
-          // }
-          // echo "<br>".$newcart;
         }
-        // $isfound = false;
-        // foreach ($items as $item) {
-        //   if ($_GET['id'] != $item || $isfound) {
-        //     $newcart = ($newcart != '') ? ($newcart . ',' . $item) : $item;
-        //   } else {
-        //     $isfound = true;
-        //   }
-        // }
         $cart = $newcart;
       }
       echo "What?".$cart;
@@ -155,60 +138,9 @@ class ShoppingCartController
         foreach ($items as $item) {
           $contents[$item] = (isset($contents[$item])) ? $contents[$item] + 1 : 1;
         }
-        $output[] = '<form action="index.php?content_page=ShoppingCart&action=update" method="post" id="cart">';
-        $output[] = '<table class="table">';
-        $output[] = '<thead>';
-        $output[] =  '<tr>';
-        $output[] =  '<th scope="col">ID</th>';
-        $output[] =  '<th scope="col">Name</th>';
-        $output[] =  '<th scope="col">Description</th>';
-        $output[] =  '<th scope="col">Price</th>';
-        $output[] =  '<th scope="col">Quantity</th>';
-        // $output[] =  '<th scope="col">Remove</th>';
-        $output[] =  '<th scope="col">Subtotal</th>';
-        $output[] =  '</tr>';
-        $output[] =  '</thead>';
-        $output[] =  '<tbody>';
-        foreach ($contents as $id=>$qty) {
-          // $sql = 'SELECT * FROM books WHERE id = '.$id;
-          $sql = 'SELECT * FROM hats WHERE id = '.$id;
-          $result = $db->query($sql);
-          $row = $result->fetch_assoc();
-          extract($row);
-          $output[] = '<tr>';
-          $output[] = '<td>'.$ID.'</td>';
-          $output[] = '<td>'.$Name.'</td>';
-          $output[] = '<td>'.$Description.'</td>';
-          $output[] = '<td>$'.$Price.'</td>';
-          $output[] = '<td><a href="index.php?content_page=ShoppingCart&action=decrease&id='.$id.'" class="badge badge-dark">-</a>
-                      <input type="text" name="qty'.$id.'" value="'.$qty.'" size="3" maxlength="3" disabled/><a href="index.php?content_page=ShoppingCart&action=add&id='.$id.'" class="badge badge-dark">+</a></td>';
-          // $output[] = '<td><a href="index.php?content_page=ShoppingCart&action=delete&id='.$id.'" class="badge badge-dark">Delete</a></td>';
-          $output[] = '<td>$'.($Price * $qty).'</td>';
-          $total += $Price * $qty;
-          $output[] = '</tr>';
-        }
-        $GST = $total * $gst_rate;
-        $totalprice = $GST + $total;
-        $output[] = '</tbody>';
-        $output[] = '</table>';
-        $output[] = '<div align="right"><p>GST: <strong>$'.$GST.'</strong></p><p>Grand total: <strong>$'.$totalprice.'</strong></p></div>';
-        $output[] = '<div><button type="submit">Update cart</button></div>';
-        $output[] = '</form>';
-
-        $output[] = '<div class="row">';
-        $output[] = '<div class="col-sm-6 col-xs-6" align="left">';
-        $output[] = '<a class="btn btn-secondary btn-sm" href="index.php?content_page=ShoppingCart&action=empty" role="button">Empty Cart</a>';
-        $output[] = '</div>';
-        $output[] = '<div class="col-sm-6 col-xs-6" align="right">';
-        $count = ShoppingCartController::countShoppingCart();
-        $output[] = '<form><button class="btn btn-primary btn-sm">Place Order &nbsp<span class="badge badge-secondary">'.$count.'</span></button></form>';
-        $output[] = '</div>';
-        $output[] = '</div>';
-
+        require_once 'Views/Components/Default.php';
       } else {
-        $output[] = '<p>You shopping cart is empty.</p>';
+        echo "<p>You shopping cart is empty.</p>";
       }
-      return join('',$output);
     }
-
 }
