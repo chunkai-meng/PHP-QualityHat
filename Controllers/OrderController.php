@@ -23,49 +23,34 @@ class OrderController
 
     public function Create_POST() {
       // collect POST values
-
-
-      // create order model
-      // insert Order
-      // create OrderDetail
-
-      // insert OrderDetail
-
-
-
-
-
+        $this->model->UserID = $_SESSION['current_userid'];
         $this->model->GST = $_POST['GST'];
         $this->model->Price = $_POST['price'];
         $this->model->Total = $_POST['totalprice'];
 
-        echo "<br>GS:".$this->model->GST."<br>";
+        $this->Firstname = "";
+        $this->Lastname = "";
+        $this->Address1 = "";
+        $this->Address2 = "";
+        $this->City = "";
+        $this->State = "";
+        $this->Country = "";
+        $this->PostalCode = "";
+        $this->Phone = "";
+
+        echo "<br>User:" . $this->model->UserID . "<br>GST:" . $this->model->GST . "<br>";
         echo "Price:".$this->model->Price."<br>";
         echo "Total:".$this->model->Total."<br>";
+
+        // Create an Order
+        $this->model->create();
 
         foreach ($_POST as $key=>$value) {
           if (stristr($key,'qty')) {
             $id = str_replace('qty','',$key);
             $qty = $value;
             echo "<br>ID:$id<br>QTY: $qty<br>";
-            // $items = ($newcart != '') ? explode(',',$newcart) : explode(',',$cart);
-            // $newcart = '';
-            // foreach ($items as $item) {
-            //   if ($id != $item) {
-            //     if ($newcart != '') {
-            //       $newcart .= ','.$item;
-            //     } else {
-            //       $newcart = $item;
-            //     }
-            //   }
-            // }
-            // for ($i=1;$i<=$value;$i++) {
-            //   if ($newcart != '') {
-            //     $newcart .= ','.$id;
-            //   } else {
-            //     $newcart = $id;
-            //   }
-            // }
+
           }
         }
         // if (isset($_FILES["file"]) && ($_FILES["file"]["error"] > 0))

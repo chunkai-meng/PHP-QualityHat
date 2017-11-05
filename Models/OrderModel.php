@@ -52,7 +52,9 @@ class OrderModel
           echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
       }
 
-      $sql = "INSERT INTO Orders(SupplierID, CategoryID, Name, Description, Price, Image) VALUES($this->SupplierID, $this->CategoryID, '$this->Name', '$this->Description', $this->Price, '$this->Image')";
+      $sql = "INSERT INTO Orders(Firstname, Lastname, Address1, Address2, City, State, Country, PostalCode, Phone, UserID, Price, GST, Total)
+              VALUES('$this->Firstname', '$this->Lastname', '$this->Address1', '$this->Address2', '$this->City', '$this->State',
+                    '$this->Country', '$this->PostalCode', '$this->Phone', $this->UserID, $this->Price, $this->GST, $this->Total)";
 
       if (!$mysqli->query($sql)) {
           echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
