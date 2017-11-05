@@ -30,6 +30,19 @@ class MemberModel
     return $rs;
   }
 
+  public function getuserid($name)
+  {
+    include 'db_connection.php';
+    $sql="SELECT Users.ID FROM Users WHERE Username='$name'";
+    $rs=$mysqli->query($sql);
+    if (!$rs)
+      {exit("Error in SQL");}
+    // $password_hash = mysqli_result($sql, 0);
+    $row = mysqli_fetch_array($rs);
+    $userid = $row[0];
+    return $userid;
+  }
+
   public function enable($id) {
     include 'db_connection.php';
     $sql = "UPDATE Users SET Enabled=1 WHERE id=$id";

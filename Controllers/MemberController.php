@@ -1,5 +1,10 @@
 <?php
-session_start(); //starting session
+$status = session_status();
+echo $status;
+if($status == PHP_SESSION_NONE){
+    //There is no active session
+    session_start();
+}
 
 class MemberController
 {
@@ -62,7 +67,7 @@ class MemberController
           //The login is successful, set the login flag to true and save the current user name
           $_SESSION['flag'] = true;
           $_SESSION['current_user'] = $_POST['Email'];
-
+          $_SESSION['current_userid'] = $this->model->getuserid($_POST['Email']);
           //redirect the user to the correct page
           //find out where to go after login
           if (isset($_SESSION['request_page']))
@@ -76,8 +81,15 @@ class MemberController
     }
 
     public function Logout_GET() {
-      session_start(); //starting session
+      $status = session_status();
+      if($status == PHP_SESSION_NONE){
+          //There is no active session
+          session_start();
+      }
+      // $request_page = $_SESSION['request_page'];
       $_SESSION['flag'] = false;
-      header("Location: ". $_SESSION['request_page']);
+      $_SESSION['current_user'] = null;
+      $_SESSION['current_userid'] = null;
+      header("Location: ". "Shop");
     }
 }

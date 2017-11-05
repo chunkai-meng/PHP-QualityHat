@@ -1,3 +1,10 @@
+<?php
+$status = session_status();
+if($status == PHP_SESSION_NONE){
+    //There is no active session
+    session_start();
+}
+?>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">
@@ -47,7 +54,17 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php
+            if(isset($_SESSION['current_user'])){
+              echo $_SESSION['current_user']."@".$_SESSION['current_userid'];
+            } else{
+              echo "Down";
+            }
+
+
+            ?>
+          </a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="index.php?content_page=Member&action=Login">Login</a>
             <a class="dropdown-item" href="#">Account Info</a>
