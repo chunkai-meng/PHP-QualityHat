@@ -1,11 +1,5 @@
 <?php require_once 'Views/Shared/Breadcrumb.php'; ?>
 
-<!-- <p>
-    <a href="index.php?content_page=Order&action=Create" class="btn btn-primary">Create New</a>
-</p> -->
-
-<hr />
-asdfasdf
 <table class="table table-striped">
   <thead>
         <tr>
@@ -83,15 +77,25 @@ echo "
             $$Total
         </td>
         <td>
-            $Status
             <form name='status' action='index.php?content_page=Order' method='post'>
               <input name='action' value='change_status' type='hidden' />
               <input name='ID' value=$ID type='hidden' />
-              <select name='Status' onchange='this.form.submit()'>
-                <option value='Submitted'>Submitted</option>
-                <option value='Shipped'>Shipped</option>
-                <option value='Delivered'>Delivered</option>
-              </select>
+              <select class='custom-select' name='Status' onchange='this.form.submit()'>
+                <option value=$Status selected>$Status</option>";
+
+              $options = ["Submitted", "Shipped", "Delivered"];
+              foreach($options as $option){
+                if($option != $Status)
+                  echo "<option value=$option>$option</option>";
+              }
+                // <option value=$Status selected>$Status</option>
+                // <option value='Submitted'>Submitted</option>
+                // <option value='Shipped'>Shipped</option>
+                // <option value='Delivered'>Delivered</option>
+
+
+
+echo "        </select>
             </form>
         </td>
         <td>

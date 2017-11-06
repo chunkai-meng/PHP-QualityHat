@@ -1,9 +1,5 @@
 <?php
-$status = session_status();
-if($status == PHP_SESSION_NONE){
-    //There is no active session
-    session_start();
-}
+require_once 'Views/Shared/CheckSession.php';
 ?>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -28,18 +24,22 @@ if($status == PHP_SESSION_NONE){
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=3">KIDS</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Hat">HAT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Category">CATEGORY</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Supplier">SUPPLIER</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Member">MEMBER</a>
-        </li>
+
+        <?php if($_SESSION['current_user'] == 'admin@email.com') { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?content_page=Hat">HAT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?content_page=Category">CATEGORY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?content_page=Supplier">SUPPLIER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?content_page=Member">MEMBER</a>
+          </li>
+        <?php } ?>
+
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Order">ORDER</a>
         </li>

@@ -1,10 +1,5 @@
 <?php
-$status = session_status();
-echo $status;
-if($status == PHP_SESSION_NONE){
-    //There is no active session
-    session_start();
-}
+require_once 'Views/Shared/CheckSession.php';
 
 class MemberController
 {
