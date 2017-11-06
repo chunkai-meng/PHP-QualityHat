@@ -71,19 +71,19 @@ echo "
             $Phone
         </td>
         <td>
-            $Price
+            $$Price
         </td>
         <td>
-            $GST
+            $$GST
         </td>
         <td>
-            $Total
+            $$Total
         </td>
         <td>
-            $Status AT $ModifiedTimestamp
+            $Status at <span class='badge badge-secondary'>$ModifiedTimestamp</span>
         </td>
         <td>
-            <a class='nav-link' href='index.php?content_page=OrderDetail&id=$ID'>Detail</a>
+            <a class='nav-link' href='index.php?content_page=OrderDetail&ID=$ID'>Detail</a>
         </td>
     </tr>
 ";

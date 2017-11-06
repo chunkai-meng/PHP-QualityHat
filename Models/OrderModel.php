@@ -23,25 +23,22 @@ class OrderModel
 
     public function get_all()
     {
-      $sql= "SELECT ID,
-                    Status,
-                    Firstname,
-                    Lastname,
-                    Address1,
-                    Address2,
-                    City,
-                    State,
-                    Country,
-                    PostalCode,
-                    Phone,
-                    GST,
-                    Price,
-                    Total,
-                    UserID,
-                    ModifiedTimestamp
-            FROM Orders";
-
       include 'db_connection.php';
+      $sql= "SELECT ID, Status, Firstname, Lastname, Address1, Address2, City, State, Country, PostalCode, Phone,
+                    GST, Price, Total, UserID, ModifiedTimestamp
+            FROM Orders";
+      $rs=$mysqli->query($sql);
+      if (!$rs)
+        {exit("Error in SQL");}
+      return $rs;
+    }
+
+    public function get($id)
+    {
+      include 'db_connection.php';
+      $sql= "SELECT ID, Status, Firstname, Lastname, Address1, Address2, City, State, Country, PostalCode, Phone,
+                    GST, Price, Total, UserID, ModifiedTimestamp
+            FROM Orders WHERE UserID=$id";
       $rs=$mysqli->query($sql);
       if (!$rs)
         {exit("Error in SQL");}

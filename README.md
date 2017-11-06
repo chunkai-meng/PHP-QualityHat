@@ -16,12 +16,14 @@
 - Insert Order and Item values into DB
     - INSERT a Order model; Done
     - PASS this OrderID to every OrderDetail model and INSERT to DB; Done
-- Order index(Action & View)
+- Order List(Action & View)
     - Upgrade Register View (make user input Phone and address info when registering): Done
     - Retrieve order info(phone & address) from users and inject into Order model: Done
+- Order List by user: Done
 
 **Create OrderDetail: Begin**
 - Create MVC for OrderDetail: Working
     - Model->get_all(): Done
     - index View: Get hat info from item record: Done
     - Add Status to Order column and update create() get_all() action: Done
+- OrderDetail List by OrderID: Done
