@@ -9,19 +9,23 @@ class OrderController
     }
 
     public function index(){
-        require_once 'Views/Shared/CheckLogin.php';
-        $models = $this->model->get($_SESSION['current_userid']);
-        // $models = $this->model->get_all();
-        require_once 'Views/Order/Index.php';
+        if($_SESSION['current_user'] == 'admin@email.com'){
+          $models = $this->model->get_all();
+          require_once 'Views/Order/Admin.php';
+        }
+        else{
+          $models = $this->model->get($_SESSION['current_userid']);
+          require_once 'Views/Order/Index.php';
+        }
     }
 
-    public function Create_GET() {
-      $categoryModel = new categoryModel();
-      $categoryModels = $categoryModel->get_all();
-      $supplierModel = new supplierModel();
-      $supplierModels = $supplierModel->get_all();
-      require_once 'Views/Order/Create.php';
+    public function change_status_POST() {
+      $id = $_POST['ID'];
+      $status = $_POST['Status'];
+      $this->model->change_status($id, $status);
+      echo "<script>location.href='index.php?content_page=Order';</script>";
     }
+
 
     public function Create_POST() {
       // collect user info from DB
@@ -43,7 +47,6 @@ class OrderController
       $this->model->Country = "";
       $this->model->PostalCode = "";
       $this->model->Phone = $user->PhoneNumber;
-
       $orderID = $this->model->create();
 
       // Create Items;

@@ -15,17 +15,18 @@ class MemberController
     }
 
     public function index(){
-      require_once 'Views/Shared/CheckLogin.php';
+      require_once 'Views/Shared/AuthorizeAdmin.php';
       $models = $this->model->get_all();
       require_once 'Views/Member/Index.php';
     }
 
     public function Create_GET() {
+      require_once 'Views/Shared/AuthorizeAdmin.php';
       require_once 'Views/Member/Create.php';
     }
 
     public function Create_POST() {
-      require_once 'Views/Member/Create.php';
+      require_once 'Views/Shared/AuthorizeAdmin.php';
       $this->model->Name = $_POST['Email'];
       $this->model->Email = $_POST['Email'];
       $this->model->Address = $_POST['Address'];
@@ -37,6 +38,7 @@ class MemberController
     }
 
     public function Enable_GET() {
+      require_once 'Views/Shared/AuthorizeAdmin.php';
       require_once 'Views/Shared/CheckLogin.php';
         $ID = $_GET['ID'];
         $this->model->enable($ID);
@@ -44,6 +46,7 @@ class MemberController
     }
 
     public function Disable_GET() {
+      require_once 'Views/Shared/AuthorizeAdmin.php';
       require_once 'Views/Shared/CheckLogin.php';
         $ID = $_GET['ID'];
         $this->model->disable($ID);
@@ -55,8 +58,8 @@ class MemberController
     }
 
     public function Login_POST() {
-      session_start(); //starting session
-      // if the user has input username and password
+      // require_once 'Views/Shared/CheckSession.php';
+
       if (isset($_POST['Email']) and isset($_POST['Password']))
       {
         //The login is not successful, set the login flag to false
@@ -76,6 +79,8 @@ class MemberController
           else
             $redirect_page = "index.php";
             //redirect the user to the correct page after login
+            // echo "Request Page:".$redirect_page;
+            // return;
           header("Location: ".$redirect_page);
         }
       } //Otherwise, stay in the login page

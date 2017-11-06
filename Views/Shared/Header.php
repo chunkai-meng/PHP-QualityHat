@@ -54,12 +54,10 @@ if($status == PHP_SESSION_NONE){
           <a class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php
             if(isset($_SESSION['current_user'])){
-              echo $_SESSION['current_user']."@".$_SESSION['current_userid'];
+              echo "Hi ".$_SESSION['current_user'];
             } else{
-              echo "Down";
+              echo "Welcome!";
             }
-
-
             ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">

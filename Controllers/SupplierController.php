@@ -4,7 +4,7 @@ class SupplierController
     private $model;
 
     public function __construct($model) {
-      require_once 'Views/Shared/CheckLogin.php';
+      require_once 'Views/Shared/AuthorizeAdmin.php';
       $this->model = $model;
     }
 

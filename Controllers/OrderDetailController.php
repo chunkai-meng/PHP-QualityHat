@@ -4,6 +4,7 @@ class OrderDetailController
     private $model;
 
     public function __construct($model) {
+      require_once 'Views/Shared/AuthorizeAdmin.php';
         $this->model = $model;
     }
 

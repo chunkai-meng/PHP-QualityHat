@@ -18,5 +18,8 @@ if (!isset($_SESSION['flag']) || ($_SESSION['flag'] == false))
   $_SESSION['request_page'] = $full_name;
   header("Location: index.php?content_page=Member&action=Login");
   exit;
+} elseif($_SESSION['current_user'] != 'admin@email.com') {
+  header("Location: index.php?content_page=Shop");
+  exit;
 }
 ?>

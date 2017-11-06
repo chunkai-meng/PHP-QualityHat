@@ -45,6 +45,14 @@ class OrderModel
       return $rs;
     }
 
+    public function change_status($id, $status) {
+      include 'db_connection.php';
+      $sql = "UPDATE Orders SET Status='$status' WHERE id=$id";
+      if (!$mysqli->query($sql)) {
+          echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
+      }
+    }
+
     public function create() {
       include 'db_connection.php';
       if ($mysqli->connect_errno) {

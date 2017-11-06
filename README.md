@@ -29,3 +29,7 @@
 - OrderDetail List by OrderID: Done
 
 **Shop Page List by Category: Done**
+
+**Differentiate Admin and Member: Almost Done**
+
+**Admin can Change Status: Done**
