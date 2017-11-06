@@ -7,7 +7,7 @@ if (!isset($_SESSION['flag']) || ($_SESSION['flag'] == false))
   {
     $full_name = $_SERVER['PHP_SELF'];
     $full_name = str_replace(".php","",$full_name);
-    $full_name = str_replace("/xli2017s1_wad/PHPPractical/","",$full_name);
+    $full_name = str_replace("/mengc06/PHPPractical/","",$full_name);
   }
   else
   {

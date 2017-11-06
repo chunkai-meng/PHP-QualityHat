@@ -27,3 +27,5 @@
     - index View: Get hat info from item record: Done
     - Add Status to Order column and update create() get_all() action: Done
 - OrderDetail List by OrderID: Done
+
+**Shop Page List by Category: Done**

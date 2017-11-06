@@ -20,13 +20,13 @@ if($status == PHP_SESSION_NONE){
           <a class="nav-link" href="index.php?content_page=Shop">All HATS<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=InformationForAuthors">MENS</a>
+          <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=1">MENS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=ManagePaper">WOMENS</a>
+          <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=2">WOMENS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=MVC">KIDS</a>
+          <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=3">KIDS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Hat">HAT</a>
@@ -42,9 +42,6 @@ if($status == PHP_SESSION_NONE){
         </li>
         <li class="nav-item">
           <a class="nav-link" href="index.php?content_page=Order">ORDER</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=php-shopping/index">Shopping Card</a>
         </li>
 
       </ul>

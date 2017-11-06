@@ -38,6 +38,25 @@ class ShopModel
       return $rs;
     }
 
+    public function get_by_category($id)
+    {
+      $sql="SELECT Hats.ID As id,
+                    Hats.Name As name,
+                    Hats.Description As description,
+                    Hats.Price As price,
+                    Hats.Image As image,
+                    Hats.CategoryID As category_ID,
+                    Hats.SupplierID As supplier_ID
+            FROM Hats WHERE CategoryID=$id";
+
+      include 'db_connection.php';
+      $rs=$mysqli->query($sql);
+      if (!$rs)
+        {exit("Error in SQL");}
+      return $rs;
+    }
+
+
     public function create() {
       include 'db_connection.php';
       $sql = "INSERT INTO Hats(SupplierID, CategoryID, Name, Description, Price, Image) VALUES($this->SupplierID, $this->CategoryID, '$this->Name', '$this->Description', $this->Price, '$this->Image')";

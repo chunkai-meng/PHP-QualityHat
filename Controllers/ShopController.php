@@ -12,4 +12,9 @@ class ShopController
         require_once 'Views/Shop/Index.php';
     }
 
+    public function category_GET(){
+        $models = $this->model->get_by_category($_GET['ID']);
+        require_once 'Views/Shop/Index.php';
+    }
+
 }

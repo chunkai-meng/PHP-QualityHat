@@ -60,6 +60,7 @@ class OrderController
           $item->create();
         }
       }
+      unset($_SESSION['cart']);
       echo "<script>location.href='index.php?content_page=Order';</script>";
     }
 
