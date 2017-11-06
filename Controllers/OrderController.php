@@ -28,6 +28,7 @@ class OrderController
       $user->getuserinfo($this->model->UserID);
 
       // collect POST values
+        $this->model->Status = 'Submitted';
         $this->model->GST = $_POST['GST'];
         $this->model->Price = $_POST['price'];
         $this->model->Total = $_POST['totalprice'];
@@ -41,15 +42,6 @@ class OrderController
         $this->model->PostalCode = "";
         $this->model->Phone = $user->PhoneNumber;
 
-        echo "<br>name: ". $user->CustomerName. "<br>";
-        echo "<br>phone: ". $user->PhoneNumber. "<br>";
-        echo "<br>addr: ". $user->Address . "<br>";
-
-        echo "<br>User:" . $this->model->UserID . "<br>GST:" . $this->model->GST . "<br>";
-        echo "Price:".$this->model->Price."<br>";
-        echo "Total:".$this->model->Total."<br>";
-
-        // Create an Order
         $orderID = $this->model->create();
 
         // Create Items;
@@ -62,9 +54,9 @@ class OrderController
 
             // init an item
             $item->HatID = $id;
-            $item->UnitPrice = 0;
             $item->Quantity = $value;
             $item->OrderID = $orderID;
+            $item->UnitPrice = 0;
             $item->create();
           }
         }

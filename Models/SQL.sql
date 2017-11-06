@@ -122,3 +122,4 @@ CREATE TABLE `orders` (
   `UserID` int(11) NOT NULL,
   `ModifiedTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `orders` ADD `Status` ENUM('Submitted','Shipped','Delivered') NULL AFTER `ID`;

@@ -1,33 +1,33 @@
 <?php
 class OrderDetailModel
 {
-    public $ID;
-    public $HatID;
-    public $UnitPrice;
-    public $Quantity;
-    public $OrderID;
-    public $ModifiedTimestamp;
-    public function __construct(){
-    // public function __construct($HatID, $UnitPrice, $Quantity, $OrderID){
-      // $this->$HatID = $HatID;
-      // $this->$UnitPrice= $UnitPrice;
-      // $this->$Quantity = $Quantity;
-      // $this->$OrderID = $OrderID;
-    }
 
     public function get_all()
     {
-      $sql="SELECT OrderDetails.ID As id,
-                    OrderDetails.HatID As name,
-                    OrderDetails.UnitPrice As lastname,
-                    OrderDetails.Quantity As addr1,
-                    OrderDetails.OrderID As addr2
-            FROM Orders";
 
       include 'db_connection.php';
+      $sql="SELECT * FROM OrderDetails, Hats WHERE OrderDetails.HatID = Hats.ID";
+
+        // select * FROM table1,table2
+        //     where table1.id = table2.id
+        //     and table1.id = 101;
+        //
+
       $rs=$mysqli->query($sql);
       if (!$rs)
         {exit("Error in SQL");}
+
+      // inject hat info into item records
+      // while ($row = $rs->fetch_assoc())
+      // {
+      //   $hatID = $row["HatID"];
+      //   // echo "<br>Hat ID: ". $hatID;
+      //   $hat = new HatModel();
+      //   $hat->get($hatID);
+      //   echo $row[0];
+      //   // echo "<br>Hat's Name: $hat->Name";
+      // }
+
       return $rs;
     }
 

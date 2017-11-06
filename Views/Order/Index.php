@@ -27,6 +27,12 @@
           <th>
             Total Price
           </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Order Detail
+          </th>
         </tr>
   </thead>
   <tbody>
@@ -34,6 +40,7 @@
 while ($row = $models->fetch_assoc())
 {
   $ID = $row["ID"];
+  $Status = $row["Status"];
   $Firstname = $row["Firstname"];
   $Lastname = $row["Lastname"];
   $Address1 = $row["Address1"];
@@ -71,6 +78,12 @@ echo "
         </td>
         <td>
             $Total
+        </td>
+        <td>
+            $Status AT $ModifiedTimestamp
+        </td>
+        <td>
+            <a class='nav-link' href='index.php?content_page=OrderDetail&id=$ID'>Detail</a>
         </td>
     </tr>
 ";

@@ -2,6 +2,7 @@
 class OrderModel
 {
     public $ID;
+    public $Status;
     public $Firstname;
     public $Lastname;
     public $Address1;
@@ -22,21 +23,22 @@ class OrderModel
 
     public function get_all()
     {
-      $sql="SELECT Orders.ID,
-                    Orders.Firstname,
-                    Orders.Lastname,
-                    Orders.Address1,
-                    Orders.Address2,
-                    Orders.City,
-                    Orders.State,
-                    Orders.Country,
-                    Orders.PostalCode,
-                    Orders.Phone,
-                    Orders.GST,
-                    Orders.Price,
-                    Orders.Total,
-                    Orders.UserID,
-                    Orders.ModifiedTimestamp
+      $sql= "SELECT ID,
+                    Status,
+                    Firstname,
+                    Lastname,
+                    Address1,
+                    Address2,
+                    City,
+                    State,
+                    Country,
+                    PostalCode,
+                    Phone,
+                    GST,
+                    Price,
+                    Total,
+                    UserID,
+                    ModifiedTimestamp
             FROM Orders";
 
       include 'db_connection.php';
@@ -52,8 +54,8 @@ class OrderModel
           echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
       }
 
-      $sql = "INSERT INTO Orders(Firstname, Lastname, Address1, Address2, City, State, Country, PostalCode, Phone, UserID, Price, GST, Total)
-              VALUES('$this->Firstname', '$this->Lastname', '$this->Address1', '$this->Address2', '$this->City', '$this->State',
+      $sql = "INSERT INTO Orders(Status, Firstname, Lastname, Address1, Address2, City, State, Country, PostalCode, Phone, UserID, Price, GST, Total)
+              VALUES('$this->Status', '$this->Firstname', '$this->Lastname', '$this->Address1', '$this->Address2', '$this->City', '$this->State',
                     '$this->Country', '$this->PostalCode', '$this->Phone', $this->UserID, $this->Price, $this->GST, $this->Total)";
 
       if (!$mysqli->query($sql)) {

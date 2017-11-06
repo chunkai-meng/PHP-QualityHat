@@ -59,9 +59,8 @@ class MemberModel
       $this->PhoneNumber = $row["PhoneNumber"];
       $this->Address = $row["Address"];
     } else {
-        echo "<br>0 results";
+        echo "User Not Found!";
     }
-
   }
 
   public function enable($id) {

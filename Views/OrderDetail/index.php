@@ -7,25 +7,19 @@
   <thead>
         <tr>
           <th>
-            ID
-          </th>
-          <th>
             Name
           </th>
           <th>
-            Address1
-          </th>
-          <th>
-            Phone
+            Description
           </th>
           <th>
             Price
           </th>
           <th>
-            GST
+            Quantity
           </th>
           <th>
-            Total Price
+            OrderID
           </th>
         </tr>
   </thead>
@@ -34,43 +28,28 @@
 while ($row = $models->fetch_assoc())
 {
   $ID = $row["ID"];
-  $Firstname = $row["Firstname"];
-  $Lastname = $row["Lastname"];
-  $Address1 = $row["Address1"];
-  $Address2 = $row["Address2"];
-  $City = $row["City"];
-  $State = $row["State"];
-  $Country = $row["Country"];
-  $PostalCode = $row["PostalCode"];
-  $Phone = $row["Phone"];
-  $GST = $row["GST"];
-  $Price = $row["Price"];
-  $Total = $row["Total"];
-  $UserID = $row["UserID"];
-  $ModifiedTimestamp = $row["ModifiedTimestamp"];
+  $Name= $row["Name"];
+  $Description= $row["Description"];
+  $Price = $row['Price'];
+  $Quantity = $row["Quantity"];
+  $OrderID= $row["OrderID"];
 
 echo "
     <tr>
         <td>
-            $ID
+            $Name
         </td>
         <td>
-            $Firstname &nbsp $Lastname
-        </td>
-        <td>
-            $Address1
-        </td>
-        <td>
-            $Phone
+            $Description
         </td>
         <td>
             $Price
         </td>
         <td>
-            $GST
+            $Quantity
         </td>
         <td>
-            $Total
+            $OrderID
         </td>
     </tr>
 ";

@@ -1,7 +1,7 @@
 <?php
 class HatModel
 {
-    public $HatID;
+    public $ID;
     public $CategoryID;
     public $SupplierID;
     public $Name;
@@ -11,13 +11,36 @@ class HatModel
     public $string;
 
     public function __construct(){
-        $this->string = "MVC + PHP = Awesome!";
-        $this->HatID = "ID";
-        $this->Name = "";
-        $this->SupplierID = 1;
-        $this->CategoryID = 1;
-        $this->Description = "Hat Desc";
-        $this->Image = "Image URL";
+        // $this->string = "MVC + PHP = Awesome!";
+        // $this->HatID = "ID";
+        // $this->Name = "";
+        // $this->SupplierID = 1;
+        // $this->CategoryID = 1;
+        // $this->Description = "Hat Desc";
+        // $this->Image = "Image URL";
+    }
+
+    public function get($id)
+    {
+      include 'db_connection.php';
+      echo "<br>ID: $id<br>";
+      $sql='SELECT ID, CategoryID, SupplierID, Name, Description, Price, Image FROM Hats WHERE ID='.$id;
+      $rs=$mysqli->query($sql);
+      if (!$rs)
+        {exit("Error in SQL");}
+      // $password_hash = mysqli_result($sql, 0);
+      if ($rs->num_rows == 1) {
+        $row = $rs->fetch_assoc();
+        $this->ID = $row["ID"];
+        $this->CategoryID = $row["CategoryID"];
+        $this->SupplierID = $row["SupplierID"];
+        $this->Name = $row["Name"];
+        $this->Description = $row["Description"];
+        $this->Price = $row["Price"];
+        $this->Image = $row["Image"];
+      } else {
+          echo "User Not Found!";
+      }
     }
 
     public function get_all()
