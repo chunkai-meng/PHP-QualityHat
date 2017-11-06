@@ -22,21 +22,21 @@ class OrderModel
 
     public function get_all()
     {
-      $sql="SELECT Orders.ID As id,
-                    Orders.Firstname As name,
-                    Orders.Lastname As lastname,
-                    Orders.Address1 As addr1,
-                    Orders.Address2 As addr2,
-                    Orders.City As City,
-                    Orders.State As State,
-                    Orders.Country As country,
-                    Orders.PostalCode As postaCode,
-                    Orders.Phone As phone,
-                    Orders.GST As gst,
-                    Orders.Price As price,
-                    Orders.Total As total,
-                    Orders.UserID As userid,
-                    Orders.ModifiedTimestamp As modifiedtime
+      $sql="SELECT Orders.ID,
+                    Orders.Firstname,
+                    Orders.Lastname,
+                    Orders.Address1,
+                    Orders.Address2,
+                    Orders.City,
+                    Orders.State,
+                    Orders.Country,
+                    Orders.PostalCode,
+                    Orders.Phone,
+                    Orders.GST,
+                    Orders.Price,
+                    Orders.Total,
+                    Orders.UserID,
+                    Orders.ModifiedTimestamp
             FROM Orders";
 
       include 'db_connection.php';

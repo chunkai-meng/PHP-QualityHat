@@ -14,15 +14,15 @@ class MemberModel
   public function get_all()
   {
     include 'db_connection.php';
-    $sql="SELECT Users.ID As id,
-                  Users.Email As email,
-                  Users.PasswordHash As password,
-                  Users.EmailConfirmed As email_confirmed,
-                  Users.PhoneNumber As phone,
-                  Users.Username As name,
-                  Users.Address As address,
-                  Users.CustomerName As customer_name,
-                  Users.Enabled As enabled
+    $sql= "SELECT ID,
+                  Email,
+                  PasswordHash,
+                  EmailConfirmed,
+                  PhoneNumber,
+                  Username,
+                  Address,
+                  CustomerName,
+                  Enabled
           FROM Users";
     $rs=$mysqli->query($sql);
     if (!$rs)
@@ -37,10 +37,31 @@ class MemberModel
     $rs=$mysqli->query($sql);
     if (!$rs)
       {exit("Error in SQL");}
-    // $password_hash = mysqli_result($sql, 0);
     $row = mysqli_fetch_array($rs);
     $userid = $row[0];
     return $userid;
+  }
+
+  public function getuserinfo($id)
+  {
+    include 'db_connection.php';
+    echo "<br>ID: $id<br>";
+    $sql='SELECT CustomerName, PhoneNumber, Address FROM Users WHERE id='.$id;
+    $rs=$mysqli->query($sql);
+    if (!$rs)
+      {exit("Error in SQL");}
+    // $password_hash = mysqli_result($sql, 0);
+    if ($rs->num_rows == 1) {
+      // output data of each row
+      echo "<br>The Result is :<br>";
+      $row = $rs->fetch_assoc();
+      $this->CustomerName = $row["CustomerName"];
+      $this->PhoneNumber = $row["PhoneNumber"];
+      $this->Address = $row["Address"];
+    } else {
+        echo "<br>0 results";
+    }
+
   }
 
   public function enable($id) {
@@ -61,7 +82,7 @@ class MemberModel
 
   public function create() {
     include 'db_connection.php';
-    $sql = "INSERT INTO Users (Username, Email, PasswordHash, CustomerName) VALUES ('$this->Name', '$this->Email', '$this->PasswordHash', '$this->CustomerName')";
+    $sql = "INSERT INTO Users (Username, Email, PasswordHash, CustomerName, PhoneNumber, Address) VALUES ('$this->Name', '$this->Email', '$this->PasswordHash', '$this->CustomerName', '$this->PhoneNumber', '$this->Address')";
     if (!$mysqli->query($sql)) {
         echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }

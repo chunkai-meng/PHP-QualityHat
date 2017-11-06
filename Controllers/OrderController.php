@@ -22,20 +22,28 @@ class OrderController
     }
 
     public function Create_POST() {
+      // collect user info from DB
+      $this->model->UserID = $_SESSION['current_userid'];
+      $user = new MemberModel();
+      $user->getuserinfo($this->model->UserID);
+
       // collect POST values
-        $this->model->UserID = $_SESSION['current_userid'];
         $this->model->GST = $_POST['GST'];
         $this->model->Price = $_POST['price'];
         $this->model->Total = $_POST['totalprice'];
-        $this->Firstname = "";
-        $this->Lastname = "";
-        $this->Address1 = "";
-        $this->Address2 = "";
-        $this->City = "";
-        $this->State = "";
-        $this->Country = "";
-        $this->PostalCode = "";
-        $this->Phone = "";
+        $this->model->Firstname = $user->CustomerName;
+        $this->model->Lastname = "";
+        $this->model->Address1 = $user->Address;
+        $this->model->Address2 = "";
+        $this->model->City = "";
+        $this->model->State = "";
+        $this->model->Country = "";
+        $this->model->PostalCode = "";
+        $this->model->Phone = $user->PhoneNumber;
+
+        echo "<br>name: ". $user->CustomerName. "<br>";
+        echo "<br>phone: ". $user->PhoneNumber. "<br>";
+        echo "<br>addr: ". $user->Address . "<br>";
 
         echo "<br>User:" . $this->model->UserID . "<br>GST:" . $this->model->GST . "<br>";
         echo "Price:".$this->model->Price."<br>";

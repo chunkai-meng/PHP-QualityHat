@@ -21,6 +21,14 @@
     <input type="text" class="form-control" name="confirm_pwd" placeholder="Confirm Password">
   </div>
   <div class="form-group">
+    <label for="exampleFormControlSelect1">Phone Number</label>
+    <input type="text" class="form-control" name="PhoneNumber" placeholder="Phone Number">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Address</label>
+    <input type="text" class="form-control" name="Address" placeholder="Address">
+  </div>
+  <div class="form-group">
     <button type="submit" class="btn btn-primary">Create</button>
   </div>
 </form>

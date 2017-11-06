@@ -30,14 +30,14 @@
 <?php
 while ($row = $models->fetch_assoc())
 {
-    $id = $row["id"];
-    $name = $row["name"];
-    $email = $row["email"];
-    $phone = $row["phone"];
-    $address = $row["address"];
-    $customer_name = $row["customer_name"];
-    $enabled = $row["enabled"];
-    $email_confirmed = $row["email_confirmed"];
+    $id = $row["ID"];
+    $name = $row["Username"];
+    $email = $row["Email"];
+    $phone = $row["PhoneNumber"];
+    $address = $row["Address"];
+    $customer_name = $row["CustomerName"];
+    $enabled = $row["Enabled"];
+    $email_confirmed = $row["EmailConfirmed"];
 
     echo "<tr>
           <td>$name</td>
