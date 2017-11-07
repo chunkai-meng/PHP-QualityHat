@@ -13,10 +13,16 @@
 </thead>
 <tbody>
 <?php
+// require 'db_connection.php';
+$mysqli = new mysqli("localhost", "mengc06", "05011981", "mengc06mysql3");
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+
 foreach ($contents as $id=>$qty) {
   // $sql = 'SELECT * FROM books WHERE id = '.$id;
   $sql = 'SELECT * FROM hats WHERE id = '.$id;
-  $result = $db->query($sql);
+  $result = $mysqli->query($sql);
   $row = $result->fetch_assoc();
   extract($row);
   $subtotal = $Price * $qty;

@@ -2,15 +2,15 @@
 
 echo "<div class='container marketing'>
     <div class='row'>";
-for( $i = 1; $i < count( $models->data ); $i++ )
+while ($row = $models->fetch_assoc())
 {
-    $id =          $models->data[$i]['ID'];
-    $image =       $models->data[$i]['Image'];
-    $name =        $models->data[$i]['Name'];
-    $description = $models->data[$i]['Description'];
-    $price =       $models->data[$i]['Price'];
-    $category =    $models->data[$i]['CategoryID'];
-    $supplier =    $models->data[$i]['SupplierID'];
+    $id = $row['id'];
+    $image = $row['image'];
+    $name = $row['name'];
+    $description = $row['description'];
+    $price = $row['price'];
+    $category = $row['category_ID'];
+    $supplier = $row['supplier_ID'];
     echo "
     <div class='card'>
     <span class='border border-light'>
@@ -32,8 +32,6 @@ for( $i = 1; $i < count( $models->data ); $i++ )
 }
 ?>
     </div>
-    <?php echo $this->createLinks( $this->_links, 'pagination pagination-sm' ); ?>
-
   </div>
 <hr />
 

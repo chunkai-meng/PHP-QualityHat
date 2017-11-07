@@ -16,16 +16,16 @@ require_once 'Views/Shared/CheckSession.php';
           <a class="nav-link" href="index.php?content_page=Shop">All HATS<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=1">MENS</a>
+          <a class="nav-link" href="index.php?content_page=Shop&ID=1">MENS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=2">WOMENS</a>
+          <a class="nav-link" href="index.php?content_page=Shop&ID=2">WOMENS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Shop&action=category&ID=3">KIDS</a>
+          <a class="nav-link" href="index.php?content_page=Shop&ID=3">KIDS</a>
         </li>
 
-        <?php if($_SESSION['current_user'] == 'admin@email.com') { ?>
+        <?php if(isset($_SESSION['current_user']) && $_SESSION['current_user'] == 'admin@email.com') { ?>
           <li class="nav-item">
             <a class="nav-link" href="index.php?content_page=Hat">HAT</a>
           </li>
@@ -46,10 +46,10 @@ require_once 'Views/Shared/CheckSession.php';
 
       </ul>
       <ul class="navbar-nav form-inline my-2 my-lg-0">
-        <form class="form-inline my-2 my-lg-0">
+        <!-- <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php

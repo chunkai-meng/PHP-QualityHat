@@ -34,8 +34,10 @@
 
 **Admin can Change Status: Done**
 
-**Paginating**
+- [x] Paginating
 
 **Email Confirm**
 
 **Error handling tested: Done**
+
+**Record Info to a file: Done**

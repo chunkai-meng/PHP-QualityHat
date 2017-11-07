@@ -56,13 +56,4 @@ class ShopModel
       return $rs;
     }
 
-
-    public function create() {
-      include 'db_connection.php';
-      $sql = "INSERT INTO Hats(SupplierID, CategoryID, Name, Description, Price, Image) VALUES($this->SupplierID, $this->CategoryID, '$this->Name', '$this->Description', $this->Price, '$this->Image')";
-
-      if (!$mysqli->query($sql)) {
-          echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
-      }
-    }
 }
