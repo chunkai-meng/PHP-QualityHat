@@ -47,6 +47,8 @@ class OrderController
       $this->model->Country = "";
       $this->model->PostalCode = "";
       $this->model->Phone = $user->PhoneNumber;
+      // echo $this->model->GST ;
+      // exit;
       $orderID = $this->model->create();
 
       // Create Items;

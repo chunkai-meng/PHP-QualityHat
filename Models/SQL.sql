@@ -62,6 +62,7 @@ CREATE TABLE `hats` (
   `Price` decimal(10,0) NOT NULL,
   `Image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `hats` CHANGE `Price` `Price` DECIMAL(10,2) NOT NULL;
 
 -- Dumping data for table `hats`
 INSERT INTO `hats` (`CategoryID`, `SupplierID`, `Name`, `Description`, `Price`, `Image`) VALUES
@@ -95,7 +96,7 @@ CREATE TABLE `orderdetails` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (ID),
   `Quantity` int(11) NOT NULL,
-  `UnitPrice` decimal(10,0) NOT NULL,
+  `UnitPrice` decimal(10,2) NOT NULL,
   `HatID` int(11) NOT NULL,
   `OrderID` int(11) NOT NULL,
   `ModifiedTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -105,8 +106,8 @@ CREATE TABLE `orderdetails` (
 -- Table structure for table `suppliers`
 --
 CREATE TABLE `orders` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (ID),
+  `ID` int(11) NOT NULL PRIMARY KEY  AUTO_INCREMENT,
+  `Status` enum('Submitted','Shipped','Delivered') DEFAULT NULL,
   `Firstname` varchar(255) NOT NULL,
   `Lastname` varchar(255) NOT NULL,
   `Address1` varchar(1000) NOT NULL,
@@ -116,10 +117,9 @@ CREATE TABLE `orders` (
   `Country` varchar(255) NOT NULL,
   `PostalCode` varchar(255) DEFAULT NULL,
   `Phone` varchar(255) NOT NULL,
-  `GST` decimal(10,0) NOT NULL,
-  `Price` decimal(10,0) NOT NULL,
-  `Total` decimal(10,0) NOT NULL,
+  `GST` decimal(10,2) NOT NULL,
+  `Price` decimal(10,2) NOT NULL,
+  `Total` decimal(10,2) NOT NULL,
   `UserID` int(11) NOT NULL,
   `ModifiedTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-ALTER TABLE `orders` ADD `Status` ENUM('Submitted','Shipped','Delivered') NULL AFTER `ID`;

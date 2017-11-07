@@ -16,7 +16,7 @@ class ShoppingCartController
         $cart = $_GET['id'];
 
       $_SESSION['cart'] = $cart;
-      header("Location: ". 'index.php?content_page=Shop');
+      header("Location: ". $_SESSION['current_page']);
     }
 
     public function decrease_GET(){
@@ -45,7 +45,7 @@ class ShoppingCartController
       }
       echo "What?".$cart;
       $_SESSION['cart'] = $cart;
-      header("Location: ". 'index.php?content_page=Shop');
+      header("Location: ". $_SESSION['current_page']);
     }
 
     public function delete_GET(){
@@ -73,7 +73,7 @@ class ShoppingCartController
 
     public function empty_GET(){
       unset($_SESSION['cart']);
-      header("Location: ". 'index.php?content_page=Shop');
+      header("Location: ". $_SESSION['current_page']);
     }
 
     public function update_GET(){
@@ -139,7 +139,7 @@ class ShoppingCartController
           $contents[$item] = (isset($contents[$item])) ? $contents[$item] + 1 : 1;
         }
         // $_SESSION['cart']="";
-        require_once 'Views/Components/Default.php';
+        require_once 'Views/Components/ShoppingCart.php';
       } else {
         echo "<p>You shopping cart is empty.</p>";
       }

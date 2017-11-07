@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Views/Shared/CheckSession.php';
 echo "<div class='container marketing'>
     <div class='row'>";
 for( $i = 1; $i < count( $models->data ); $i++ )

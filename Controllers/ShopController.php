@@ -1,5 +1,4 @@
 <?php class ShopController {
-
   private $_conn;
   private $_limit;
   private $_page;
@@ -36,8 +35,7 @@
 
   public function getData() {
     $query      = $this->_query . " LIMIT " . ( ( $this->_page - 1 ) * $this->_limit ) . ", $this->_limit";
-    echo $query;
-    $rs             = $this->_conn->query( $query );
+    $rs         = $this->_conn->query( $query );
     if (!$rs)
       {exit("Error in SQL");}
 
@@ -63,7 +61,8 @@
     $last_disabled = $lastpage==0 ? 'disabled' : "";
     $next_disabled= $nextpage==0 ? 'disabled' : "";
     $id = $this->_categoryID;
-    echo "<br>$lastpage<br>$current_page<br>$nextpage<br>$page_needed<br>TotalHat:$hat_number";
+    // echo "<br>$lastpage<br>$current_page<br>$nextpage<br>$page_needed<br>TotalHat:$hat_number";
+    $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
     require 'Views/Shop/PaginatingLink.php';
   }
 

@@ -62,7 +62,8 @@ class OrderModel
       $sql = "INSERT INTO Orders(Status, Firstname, Lastname, Address1, Address2, City, State, Country, PostalCode, Phone, UserID, Price, GST, Total)
               VALUES('$this->Status', '$this->Firstname', '$this->Lastname', '$this->Address1', '$this->Address2', '$this->City', '$this->State',
                     '$this->Country', '$this->PostalCode', '$this->Phone', $this->UserID, $this->Price, $this->GST, $this->Total)";
-
+      // echo $sql;
+      // exit;
       if (!$mysqli->query($sql)) {
           echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
       }
