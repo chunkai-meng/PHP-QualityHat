@@ -28,7 +28,7 @@ class HatController
         $this->model->CategoryID = $_POST['category'];
         $this->model->SupplierID = $_POST['supplier'];
 
-
+        // Error handling
         if (isset($_FILES["file"]) && ($_FILES["file"]["error"] > 0))
         {
           echo "Error: " . $_FILES["file"]["error"] . "<br />";

@@ -33,3 +33,9 @@
 **Differentiate Admin and Member: Almost Done**
 
 **Admin can Change Status: Done**
+
+**Paginating**
+
+**Email Confirm**
+
+**Error handling tested: Done**
