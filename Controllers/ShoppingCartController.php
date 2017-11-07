@@ -138,8 +138,7 @@ class ShoppingCartController
         foreach ($items as $item) {
           $contents[$item] = (isset($contents[$item])) ? $contents[$item] + 1 : 1;
         }
-        // $_SESSION['cart']="";
-        require_once 'Views/Components/ShoppingCart.php';
+        require_once 'ViewComponents/ShoppingCart.php';
       } else {
         echo "<p>You shopping cart is empty.</p>";
       }

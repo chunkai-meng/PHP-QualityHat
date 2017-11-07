@@ -16,12 +16,10 @@ class MemberController
     }
 
     public function Create_GET() {
-      require_once 'Views/Shared/AuthorizeAdmin.php';
       require_once 'Views/Member/Create.php';
     }
 
     public function Create_POST() {
-      require_once 'Views/Shared/AuthorizeAdmin.php';
       $this->model->Name = $_POST['Email'];
       $this->model->Email = $_POST['Email'];
       $this->model->Address = $_POST['Address'];

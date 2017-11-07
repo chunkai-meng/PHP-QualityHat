@@ -62,7 +62,7 @@ require_once 'Views/Shared/CheckSession.php';
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="index.php?content_page=Member&action=Login">Login</a>
-            <a class="dropdown-item" href="#">Account Info</a>
+            <a class="dropdown-item" href="index.php?content_page=Member&action=Create">Register</a>
             <a class="dropdown-item" href="index.php?content_page=Member&action=Logout">Logout</a>
           </div>
         </li>
