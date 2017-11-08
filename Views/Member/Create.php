@@ -4,22 +4,20 @@ function myFunction() {
     var pass2 = document.getElementById("pass2").value;
     var ok = true;
     if (pass1 != pass2) {
-        //alert("Passwords Do not match");
-	document.getElementById("demo").innerHTML = "Password not match!";
-        document.getElementById("pass1").style.borderColor = "#E34234";
-	document.getElementById("pass1").value = "";
-        document.getElementById("pass2").style.borderColor = "#E34234";
-	document.getElementById("pass2").value = "";
-        ok = false;
+      //alert("Passwords Do not match");
+	    document.getElementById("demo").innerHTML = "Password not match!";
+      document.getElementById("pass1").style.borderColor = "#E34234";
+	    document.getElementById("pass1").value = "";
+      document.getElementById("pass2").style.borderColor = "#E34234";
+	    document.getElementById("pass2").value = "";
+      document.getElementById("demo").innerHTML = checkPwd(pass1);
+      ok = false;
     }
     else {
-	isvalid = checkPwd(pass1);
-	if(isvalid == "ok"){
-		ok = true;
-	}else{
-		document.getElementById("demo").innerHTML = checkPwd(pass1);
-		ok = false;
-	}
+	    var isvalid = checkPwd(pass1);
+	    if(isvalid == "ok"){
+		  ok = true;
+	  }
     return ok;
 }
 

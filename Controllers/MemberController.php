@@ -143,6 +143,6 @@ class MemberController
       $_SESSION['flag'] = false;
       $_SESSION['current_user'] = null;
       $_SESSION['current_userid'] = null;
-      header("Location: ". "Shop");
+      echo "<script>location.href='index.php?content_page=Shop';</script>";
     }
 }

@@ -36,8 +36,8 @@ class OrderController
       // collect POST values
       $this->model->Status = 'Submitted';
       $this->model->GST = $_POST['GST'];
-      $this->model->Price = $_POST['price'];
-      $this->model->Total = $_POST['totalprice'];
+      $this->model->Price = $_POST['Price'];
+      $this->model->Total = $_POST['Total'];
       $this->model->Firstname = $user->CustomerName;
       $this->model->Lastname = "";
       $this->model->Address1 = $user->Address;
