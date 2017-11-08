@@ -3,7 +3,7 @@ require_once 'Views/Shared/CheckSession.php';
 ?>
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php?content_page=Shop">
       <img src="images/logos/logos-2.png" height="24" width="110">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
