@@ -6,10 +6,11 @@ class MemberModel
   public $PasswordHash;
   public $EmailConfirmed;
   public $PhoneNumber;
-  public $Name;
+  public $Username;
   public $Address;
   public $CustomerName;
   public $Enabled;
+  public $EmailHash;
 
   public function get_all()
   {
@@ -30,10 +31,24 @@ class MemberModel
     return $rs;
   }
 
-  public function getuserid($name)
+  public function get_email_hash($username)
   {
     include 'db_connection.php';
-    $sql="SELECT Users.ID FROM Users WHERE Username='$name'";
+    $sql="SELECT EmailHash FROM Users WHERE Username='$username'";
+    $rs=$mysqli->query($sql);
+    if (!$rs)
+      {exit("Error in SQL");}
+    $row = mysqli_fetch_array($rs);
+    $EmailHash = $row[0];
+    echo $EmailHash;
+    // exit;
+    return $EmailHash;
+  }
+
+  public function getuserid($username)
+  {
+    include 'db_connection.php';
+    $sql="SELECT Users.ID FROM Users WHERE Username='$username'";
     $rs=$mysqli->query($sql);
     if (!$rs)
       {exit("Error in SQL");}
@@ -46,7 +61,7 @@ class MemberModel
   {
     include 'db_connection.php';
     echo "<br>ID: $id<br>";
-    $sql='SELECT CustomerName, PhoneNumber, Address FROM Users WHERE id='.$id;
+    $sql='SELECT CustomerName, PhoneNumber, Address, EmailHash FROM Users WHERE id='.$id;
     $rs=$mysqli->query($sql);
     if (!$rs)
       {exit("Error in SQL");}
@@ -58,6 +73,7 @@ class MemberModel
       $this->CustomerName = $row["CustomerName"];
       $this->PhoneNumber = $row["PhoneNumber"];
       $this->Address = $row["Address"];
+      $this->EmailHash = $row["EmailHash"];
     } else {
         echo "User Not Found!";
     }
@@ -81,7 +97,15 @@ class MemberModel
 
   public function create() {
     include 'db_connection.php';
-    $sql = "INSERT INTO Users (Username, Email, PasswordHash, CustomerName, PhoneNumber, Address) VALUES ('$this->Name', '$this->Email', '$this->PasswordHash', '$this->CustomerName', '$this->PhoneNumber', '$this->Address')";
+    $sql = "INSERT INTO Users (Username, Email, EmailHash, PasswordHash, CustomerName, PhoneNumber, Address) VALUES ('$this->Username', '$this->Email', '$this->EmailHash', '$this->PasswordHash', '$this->CustomerName', '$this->PhoneNumber', '$this->Address')";
+    if (!$mysqli->query($sql)) {
+        echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+  }
+
+  public function verified($username) {
+    include 'db_connection.php';
+    $sql = "UPDATE Users SET EmailConfirmed=1 WHERE Username='$username'";
     if (!$mysqli->query($sql)) {
         echo "SQL operation failed: (" . $mysqli->errno . ") " . $mysqli->error;
     }

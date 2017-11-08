@@ -48,6 +48,7 @@ CREATE TABLE `users` (
   `CustomerName` varchar(255) DEFAULT NULL,
   `Enabled` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `users` ADD `EmailHash` VARCHAR(32) NOT NULL AFTER `EmailConfirmed`;
 
 --
 -- Table structure for table `hats`

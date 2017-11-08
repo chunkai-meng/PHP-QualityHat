@@ -20,14 +20,65 @@ class MemberController
     }
 
     public function Create_POST() {
-      $this->model->Name = $_POST['Email'];
+      $this->model->Username = $_POST['Email'];
       $this->model->Email = $_POST['Email'];
+      $this->model->EmailHash = md5( rand(0,1000) );
       $this->model->Address = $_POST['Address'];
       $this->model->PhoneNumber = $_POST['PhoneNumber'];
       $this->model->PasswordHash = password_hash($_POST['Password'], PASSWORD_DEFAULT);
       $this->model->CustomerName = $_POST['Name'];
-      $this->model->create();
-      echo "<script>location.href='index.php?content_page=Member';</script>";
+      $current_user_id = $this->model->getuserid($this->model->Username);
+      if(isset($current_user_id) && $current_user_id != 0){
+        echo "<script>location.href='index.php?content_page=Member&action=Create&username=".$this->model->Username."';</script>";
+      } else {
+        $this->model->create();
+        $this->send_verification_email();
+        require_once 'Views/Member/Verification.php';
+      }
+    }
+
+    public function send_verification_email() {
+      $servername = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+      $to      = $this->model->Email; // Send email to our user
+      $subject = 'Signup | Verification'; // Give the email a subject
+      $message = '
+
+      Thanks for signing up!
+      Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+
+      ------------------------
+      Username: '.$this->model->CustomerName.'
+      ------------------------
+
+      Please click this link to activate your account:
+
+      '. $servername .'&action=Verification&email='.$this->model->Email.'&hash='.$this->model->EmailHash.'
+
+      '; // Our message above including the link
+
+      $headers = 'From: webmaster@QualityHats.com' . "\r\n" .
+          'Reply-To: hustmck@163.com' . "\r\n" .
+          'X-Mailer: PHP/' . phpversion();
+      // echo $message;
+      // echo "<BR>$to";
+      // exit;
+      mail($to, $subject, $message, $headers); // Send our email
+    }
+
+    public function Verification_GET() {
+      echo "Good boy";
+      echo $_GET['email']."<br>";
+      echo $_GET['hash'].'<br>';
+      $username = $_GET['email'];
+      $emailhash = $_GET['hash'];
+      echo $username;
+      $result = $this->model->get_email_hash($username);
+      if ($emailhash == $result) {
+        echo "Verification Succesfully done!";
+        $this->model->verified($username);
+      } else{
+        echo "Get: $emailhash But Result: $result not the same!";
+      }
     }
 
     public function Enable_GET() {
