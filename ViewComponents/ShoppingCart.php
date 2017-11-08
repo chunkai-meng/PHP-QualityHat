@@ -11,7 +11,8 @@
 <th scope="col">Subtotal</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="small">
+
 <?php
 foreach ($contents as $id=>$qty) {
   $sql = 'SELECT * FROM hats WHERE id = '.$id;
@@ -23,19 +24,20 @@ foreach ($contents as $id=>$qty) {
           <td>$ID</td>
           <td>$Name</td>
           <td>$Description</td>
-          <td>$Price</td>
+          <td>$$Price</td>
           <input type='hidden' name='Price' value=$Price />
-          <td><a href='index.php?content_page=ShoppingCart&action=decrease&id=$id' class='badge badge-dark'>-</a>
-              <input type='text' name='qty$id' value=$qty size=3 maxlength=3 readonly />
+          <td class='text-nowrap'><a href='index.php?content_page=ShoppingCart&action=decrease&id=$id' class='badge badge-dark'>-</a>
+              <input type='text' name='qty$id' value=$qty size=2 maxlength=3 readonly />
               <a href='index.php?content_page=ShoppingCart&action=add&id=$id' class='badge badge-dark'>+</a>
           </td>
-          <td>$subtotal</td>
+          <td>$$subtotal</td>
         </tr>";
         $total += $Price * $qty;
 }
 $GST = $total * $gst_rate;
 $totalprice = $GST + $total;
 ?>
+
 </tbody>
 </table>
 <div align="right">

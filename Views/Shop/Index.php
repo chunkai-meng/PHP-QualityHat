@@ -16,12 +16,12 @@ for( $i = 1; $i < count( $models->data ); $i++ )
     <span class='border border-light'>
       <img class='card-img-top' src='images/hats/$image' alt='Card image cap' height='242' width='200'>
       <div class='card-body'>
-        <h4 class='card-title'>$name</h4>
+        <h5 class='card-title'>$name</h5>
         <p class='card-text'>$description</p>
       </div>
       <div class='card-footer'>
         <div class='row'>
-          <div class='col-xs-6 col-md-8'><h4>$$price</h4></div>
+          <div class='col-xs-6 col-md-8'><h6>$$price</h6></div>
           <div class='col-xs-6 col-md-4' align='right'>
             <a href='index.php?content_page=ShoppingCart&action=add&id=$id' class='badge badge-dark'>+</a>
           </div>
@@ -37,7 +37,7 @@ for( $i = 1; $i < count( $models->data ); $i++ )
   </div>
 <hr />
 
-<h3>Shopping Cart </h3>
+<h5>Shopping Cart </h5>
 <?php
 // $count = ShoppingCartController::countShoppingCart();
 // echo "<span class='badge badge-secondary'>$count</span>";

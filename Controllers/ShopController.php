@@ -57,9 +57,9 @@
     $hat_number =  $this->_total;
     $page_needed =  ceil($this->_total/$this->_limit);
     $lastpage = ($current_page-1) <= 0 ? 0 : ($current_page-1);
-    $nextpage = ($current_page+1) > $page_needed ? 0 : $page_needed;
+    $nextpage = ($current_page+1) > $page_needed ? 0 : ($current_page+1);
     $last_disabled = $lastpage==0 ? 'disabled' : "";
-    $next_disabled= $nextpage==0 ? 'disabled' : "";
+    $next_disabled = $nextpage==0 ? 'disabled' : "";
     $id = $this->_categoryID;
     // echo "<br>$lastpage<br>$current_page<br>$nextpage<br>$page_needed<br>TotalHat:$hat_number";
     $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];

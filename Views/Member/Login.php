@@ -11,7 +11,7 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Password</label>
-    <input type="text" class="form-control" name="Password" placeholder="Password">
+    <input type="password" class="form-control" name="Password" placeholder="Password">
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Login</button>

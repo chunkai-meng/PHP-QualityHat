@@ -14,7 +14,7 @@
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
+    <link href="assets/css/album.css" rel="stylesheet">
     <!-- <link href="sticky-footer-navbar.css" rel="stylesheet"> -->
   </head>
 
@@ -49,7 +49,6 @@ include('Views/Shared/Footer.php');
 </html>
 
 <?php
-
 function Route(){
   foreach (glob("Controllers/*.php") as $filename)
   {
@@ -59,25 +58,23 @@ function Route(){
   {
       include $filename;
   }
-
-
-  if (isset($_GET['content_page']))
+  if (isset($_GET['content_page'])){
     $page_name = $_GET['content_page'];
-  else
+    $modelName = $page_name.'Model';
+    $model = new $modelName();
+    $controllerName = $page_name.'Controller';
+    $controller = new $controllerName($model);
+
+    if (isset($_GET['action']) && !empty($_GET['action'])) {
+      $controller->{$_GET['action']."_GET"}();
+    } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
+      $controller->{$_POST['action']."_POST"}();
+    } else {
+        $controller->index();
+    }
+  }
+  else{
     $page_name = "Shop";
-
-
-  $modelName = $page_name.'Model';
-  $model = new $modelName();
-  $controllerName = $page_name.'Controller';
-  $controller = new $controllerName($model);
-
-  if (isset($_GET['action']) && !empty($_GET['action'])) {
-    $controller->{$_GET['action']."_GET"}();
-  } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
-    $controller->{$_POST['action']."_POST"}();
-  } else {
-      $controller->index();
   }
 }
 ?>

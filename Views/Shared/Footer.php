@@ -1,8 +1,8 @@
 <footer class="footer">
   <div class="container">
-    <p class="float-right">
-      <a href="index.php?content_page=Contact">Contact Us</a>
+    <p class="float-right small">
+      <a href="index.php?content_page=About">Contact Us</a>
     </p>
-    <p>Quality Hats is &copy; QualityHats </p>
+    <p class="small">Quality Hats is &copy; QualityHats </p>
   </div>
 </footer>

@@ -46,11 +46,11 @@ while ($row = $models->fetch_assoc())
           <td>$customer_name</td>";
     if ($email_confirmed == true)
     {
-      echo "<td><input type='checkbox' checked='checked' name='enabled'></td>";
+      echo "<td><input type='checkbox' checked='checked' name='enabled' disabled=disabled></td>";
     }
     else
     {
-      echo "<td><input type='checkbox' name='enabled'></td>";
+      echo "<td><input type='checkbox' name='enabled' disabled=disabled></td>";
     }
     if ($enabled == true)
     {

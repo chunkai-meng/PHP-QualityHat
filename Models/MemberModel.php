@@ -40,8 +40,6 @@ class MemberModel
       {exit("Error in SQL");}
     $row = mysqli_fetch_array($rs);
     $EmailHash = $row[0];
-    echo $EmailHash;
-    // exit;
     return $EmailHash;
   }
 

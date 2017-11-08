@@ -66,13 +66,14 @@ class MemberController
     }
 
     public function Verification_GET() {
-      echo $_GET['email']."<br>";
       $username = $_GET['email'];
       $emailhash = $_GET['hash'];
-      echo $username;
       $result = $this->model->get_email_hash($username);
       if ($emailhash == $result) {
-        echo "Verification Succesfully done!";
+        echo  " <div class='alert alert-success' role='alert'>
+                  $username Verification Succesfully done!
+                </div>
+              ";
         $this->model->verified($username);
       } else{
         echo "Get: $emailhash But Result: $result not the same!";
