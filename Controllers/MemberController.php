@@ -66,9 +66,7 @@ class MemberController
     }
 
     public function Verification_GET() {
-      echo "Good boy";
       echo $_GET['email']."<br>";
-      echo $_GET['hash'].'<br>';
       $username = $_GET['email'];
       $emailhash = $_GET['hash'];
       echo $username;

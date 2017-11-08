@@ -57,14 +57,17 @@ class OrderController
         if (stristr($key,'qty')) {
           $id = str_replace('qty','',$key);
           $qty = $value;
-          // init an item
+
           $item->HatID = $id;
           $item->Quantity = $value;
           $item->OrderID = $orderID;
           $item->UnitPrice = 0;
           $item->create();
+          // echo $item->HatID;
+          //       exit;
         }
       }
+
       unset($_SESSION['cart']);
       echo "<script>location.href='index.php?content_page=Order';</script>";
     }

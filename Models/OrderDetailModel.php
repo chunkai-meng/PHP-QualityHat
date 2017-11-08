@@ -1,6 +1,11 @@
 <?php
 class OrderDetailModel
 {
+  public $HatID;
+  public $UnitPrice;
+  public $Quantity;
+  public $OrderID;
+
     public function get_all()
     {
       include 'db_connection.php';

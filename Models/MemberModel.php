@@ -61,19 +61,18 @@ class MemberModel
   {
     include 'db_connection.php';
     echo "<br>ID: $id<br>";
-    $sql='SELECT CustomerName, PhoneNumber, Address, EmailHash FROM Users WHERE id='.$id;
+    $sql='SELECT CustomerName, PhoneNumber, Address FROM Users WHERE id='.$id;
     $rs=$mysqli->query($sql);
     if (!$rs)
       {exit("Error in SQL");}
     // $password_hash = mysqli_result($sql, 0);
     if ($rs->num_rows == 1) {
       // output data of each row
-      echo "<br>The Result is :<br>";
       $row = $rs->fetch_assoc();
       $this->CustomerName = $row["CustomerName"];
       $this->PhoneNumber = $row["PhoneNumber"];
       $this->Address = $row["Address"];
-      $this->EmailHash = $row["EmailHash"];
+      echo "<br>The Result is : $this->CustomerName<br>";
     } else {
         echo "User Not Found!";
     }
@@ -113,7 +112,7 @@ class MemberModel
 
   public function check_passwd($name, $passwd){
     include 'db_connection.php';
-    $sql = "SELECT PasswordHash FROM Users WHERE Username='$name'";
+    $sql = "SELECT PasswordHash FROM Users WHERE Username='$name' AND EmailConfirmed=1";
     // "SELECT `password` FROM `users` WHERE `username` = '$loggin_user'";
     $rs=$mysqli->query($sql);
     if (!$rs)
@@ -126,7 +125,7 @@ class MemberModel
       echo 'Password is valid!';
       return (true);
     } else {
-        echo 'Invalid password.';
+        echo 'Invalid password or email not confirmed!';
       return (false);
     }
   }

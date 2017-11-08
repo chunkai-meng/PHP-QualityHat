@@ -26,7 +26,7 @@ foreach ($contents as $id=>$qty) {
           <td>$Price</td>
           <input type='hidden' name='Price' value=$Price />
           <td><a href='index.php?content_page=ShoppingCart&action=decrease&id=$id' class='badge badge-dark'>-</a>
-              <input type='text' name='qty$id' value=$qty size=3 maxlength=3 disabled/>
+              <input type='text' name='qty$id' value=$qty size=3 maxlength=3 readonly />
               <a href='index.php?content_page=ShoppingCart&action=add&id=$id' class='badge badge-dark'>+</a>
           </td>
           <td>$subtotal</td>

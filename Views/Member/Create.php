@@ -10,33 +10,37 @@ function myFunction() {
 	    document.getElementById("pass1").value = "";
       document.getElementById("pass2").style.borderColor = "#E34234";
 	    document.getElementById("pass2").value = "";
-      document.getElementById("demo").innerHTML = checkPwd(pass1);
       ok = false;
     }
     else {
 	    var isvalid = checkPwd(pass1);
-	    if(isvalid == "ok"){
-		  ok = true;
-	  }
+      if(isvalid == "ok"){
+        ok = true;
+      } else {
+        document.getElementById("demo").innerHTML = checkPwd(pass1);
+        ok = false;
+      }
+    }
     return ok;
 }
 
 function checkPwd(str) {
     if (str.length < 6) {
-        return("too_short");
+        return("The password must be more than 6 characters.");
     } else if (str.length > 50) {
         return("too_long");
     } else if (str.search(/\d/) == -1) {
-        return("no_num");
+        return("Password must include at least 1 number.");
     } else if (str.search(/[a-zA-Z]/) == -1) {
-        return("no_letter");
+        return("Password must include at least 1 character.");
     } else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
-        return("bad_char");
+        return("Invalid character!");
     }
     return("ok");
 }
 
 </script>
+
 <?php require_once 'Views/Shared/Breadcrumb.php';
 if(isset($_GET['username'])){
   $username = $_GET['username'];
@@ -74,6 +78,6 @@ if(isset($_GET['username'])){
     <input type="text" class="form-control" name="Address" placeholder="Address">
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary" value="Submit">Create</button>
+    <input type="submit" class="btn btn-primary" value="Submit" />
   </div>
 </form>
