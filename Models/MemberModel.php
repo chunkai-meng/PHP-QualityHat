@@ -110,7 +110,7 @@ class MemberModel
 
   public function check_passwd($name, $passwd){
     include 'db_connection.php';
-    $sql = "SELECT PasswordHash FROM Users WHERE Username='$name' AND EmailConfirmed=1";
+    $sql = "SELECT PasswordHash FROM Users WHERE Username='$name' AND EmailConfirmed=1 AND Enabled=1";
     // "SELECT `password` FROM `users` WHERE `username` = '$loggin_user'";
     $rs=$mysqli->query($sql);
     if (!$rs)
@@ -123,7 +123,10 @@ class MemberModel
       echo 'Password is valid!';
       return (true);
     } else {
-        echo 'Invalid password or email not confirmed!';
+        echo '<div class="alert alert-warning" role="alert">
+                Invalid password or Email not confirmed or Account is disabled!
+              </div>
+              ';
       return (false);
     }
   }
