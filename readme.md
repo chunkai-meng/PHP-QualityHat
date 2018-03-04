@@ -8,6 +8,7 @@ The requirement is the same with ASP.Net Core MVC - QualityHat
 - Site administrator can manage the Customer Accounts, Product (hats), Categories, Suppliers and Orders.
 
 ### Develop Environment
-- PHP & MySQL
+- PHP:  PHP 7.1.11 (cli) (built: Oct 27 2017 11:00:03)
+- MySQL: Ver 5.7.20 for osx10.13 on x86_64 (Homebrew)
 - MacBook & Atom
 
