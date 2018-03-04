@@ -40,9 +40,11 @@ require_once 'Views/Shared/CheckSession.php';
           </li>
         <?php } ?>
 
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?content_page=Order">ORDER</a>
-        </li>
+        <?php if(isset($_SESSION['current_user'])) { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?content_page=Order">ORDER</a>
+          </li>
+        <?php } ?>
 
       </ul>
       <ul class="navbar-nav form-inline my-2 my-lg-0">

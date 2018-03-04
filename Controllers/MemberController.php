@@ -19,7 +19,22 @@ class MemberController
       require_once 'Views/Member/Create.php';
     }
 
+    function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
+
     public function Create_POST() {
+      $email = $this->test_input($_POST["Email"]);
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format: $email";
+        $error =  $emailErr;
+        require_once 'Views/Member/Create.php';
+        exit;
+      }
+
       $this->model->Username = $_POST['Email'];
       $this->model->Email = $_POST['Email'];
       $this->model->EmailHash = md5( rand(0,1000) );
@@ -28,8 +43,11 @@ class MemberController
       $this->model->PasswordHash = password_hash($_POST['Password'], PASSWORD_DEFAULT);
       $this->model->CustomerName = $_POST['Name'];
       $current_user_id = $this->model->getuserid($this->model->Username);
+
       if(isset($current_user_id) && $current_user_id != 0){
-        echo "<script>location.href='index.php?content_page=Member&action=Create&username=".$this->model->Username."';</script>";
+        $error =  $this->model->Username." already exist, please choose another email.";
+        require_once 'Views/Member/Create.php';
+        exit;
       } else {
         $this->model->create();
         $this->send_verification_email();

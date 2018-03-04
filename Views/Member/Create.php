@@ -41,14 +41,15 @@ function checkPwd(str) {
 
 </script>
 
-<?php require_once 'Views/Shared/Breadcrumb.php';
-if(isset($_GET['username'])){
-  $username = $_GET['username'];
-  echo "<p>$username Alread Exist!</p>";
-}
+<?php
+  require_once 'Views/Shared/Breadcrumb.php';
 ?>
 
-<p id="demo"></p>
+
+<div id="demo" class="alert alert-warning" role="alert">
+<?php if(isset($error)){ echo $error; }  ?>
+</div>
+
 <br>
 <form method="post" enctype="multipart/form-data" action="index.php?content_page=Member" onsubmit="return myFunction()">
   <input type="hidden" name="action" value="Create" />

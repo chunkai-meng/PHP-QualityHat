@@ -60,21 +60,23 @@ function Route(){
   }
   if (isset($_GET['content_page'])){
     $page_name = $_GET['content_page'];
-    $modelName = $page_name.'Model';
-    $model = new $modelName();
-    $controllerName = $page_name.'Controller';
-    $controller = new $controllerName($model);
-
-    if (isset($_GET['action']) && !empty($_GET['action'])) {
-      $controller->{$_GET['action']."_GET"}();
-    } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
-      $controller->{$_POST['action']."_POST"}();
-    } else {
-        $controller->index();
-    }
   }
   else{
     $page_name = "Shop";
   }
+  
+  $modelName = $page_name.'Model';
+  $model = new $modelName();
+  $controllerName = $page_name.'Controller';
+  $controller = new $controllerName($model);
+
+  if (isset($_GET['action']) && !empty($_GET['action'])) {
+    $controller->{$_GET['action']."_GET"}();
+  } elseif (isset($_POST['action']) && !empty($_POST['action'])) {
+    $controller->{$_POST['action']."_POST"}();
+  } else {
+      $controller->index();
+  }
+
 }
 ?>

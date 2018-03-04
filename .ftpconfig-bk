@@ -3,7 +3,7 @@
     "host": "dochyper.unitec.ac.nz",
     "port": 21,
     "user": "mengc06",
-    "pass": "05011981",
+    "pass": "",
     "promptForPass": false,
     "remote": "/PHPPractical",
     "local": "/Users/CK/Git/Backend/PHP/PHPPractical",
